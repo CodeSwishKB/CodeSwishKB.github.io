@@ -1,4 +1,4 @@
-#Recipe Website
+# Recipe Website
 
 This repo is for html project by Odin Project
 I build simple website to display the recipes of my favorite dishes to eat!!
