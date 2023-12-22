@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAKERS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="vbg">
+            <header class="header">
+            <div class="container row">
+                <div class="header__logo">
+                    <img src="https://content.sportslogos.net/logos/6/237/full/los_angeles_lakers_logo_primary_2024_sportslogosnet-7324.png" alt="">
+                </div>
+                <nav class="navbar row">
+                    <a class="navbar__link" href="https://en.wikipedia.org/wiki/Los_Angeles_Lakers" target="_blank">About</a>
+                    <a class="navbar__link" href="https://www.nba.com/kobe-bryant-tribute" target="_blank">Kobe!</a>
+                    <a class="navbar__link" href="https://lakersnation.com/" target="_blank">More</a>
+                </nav>
+            </div>
+            </header>
+
+            <video class="video-bg" autoplay muted loop>
+                <source src="NBA Finals LA Lakers Celebration 2010.mp4" type="video/mp4">
+            </video>
+            
+            <section class="welcome">
+                <div class="container">
+                    <div class="welcome__content row">
+                        <div class="welcome__text-content">
+                            <h1 class="welcome__title">Welcome Lakers Fans!!!</h1>
+                            <p class="welcome__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis accusantium quaerat accusamus quod cupiditate consequatur veniam exercitationem enim velit amet!</p>
+                                <button class="welcome__btn">Sign Up</button>
+                        </div>
+                        <div class="welcome__image">
+                            <img src="https://i.pinimg.com/736x/64/25/e8/6425e87dabc2cd3965cf3702ed032f2d.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="second">
+            <div class="container">
+                <h2 class="second__title">Some random information</h2>
+                <div class="second__image-w-text">
+                    <div class="item">
+                        <div class="second-image">
+                            <img src="" alt="">
+                        </div>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, ex.</p>
+                    </div>
+                    <div class="item">
+                        <div class="second-image">
+                            <img src="" alt="">
+                        </div>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, ex.</p>
+                    </div>
+                    <div class="item">
+                        <div class="second-image">
+                            <img src="" alt="">
+                        </div>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, ex.</p>
+                    </div>
+                    <div class="item">
+                        <div class="second-image">
+                            <img src="" alt="">
+                        </div>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, ex.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="third">
+            <div class="container">
+                <blockquote>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, quos.</p>
+                    <p>By uyang the great</p>
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="fourth">
+            <div class="container">
+                <div class="cta">
+                    <div class="fourth__text-content">
+                        <h3>Call to action! It's time!</h3>
+                        <p>Sign in para manalo ng gifts </p>
+                    </div>
+                    <div class="btn-content">
+                        <button>Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>Copyright &copy; The Odin Project 2021</p>
+            </div>
+        </footer>
+
+        <script>
+            document.addEventListener('scroll', () => {
+                const header = document.querySelector('.header')
+
+                if (window.scrollY > 0){
+                    header.classList.add('scrolled')
+                } else {
+                    header.classList.remove('scrolled')
+                }
+            } )
+        </script>
+</body>
+</html>
