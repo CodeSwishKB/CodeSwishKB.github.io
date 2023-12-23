@@ -21,9 +21,6 @@
             </div>
             </header>
 
-            <video class="video-bg" autoplay muted loop>
-                <source src="NBA Finals LA Lakers Celebration 2010.mp4" type="video/mp4">
-            </video>
             
             <section class="welcome">
                 <div class="container">
@@ -33,6 +30,11 @@
                             <p class="welcome__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis accusantium quaerat accusamus quod cupiditate consequatur veniam exercitationem enim velit amet!</p>
                                 <button class="welcome__btn">Sign Up</button>
                         </div>
+
+                        <video class="video-bg" autoplay muted loop>
+                            <source src="NBA Finals LA Lakers Celebration 2010.mp4" type="video/mp4">
+                        </video>
+
                         <div class="welcome__image">
                             <img src="https://i.pinimg.com/736x/64/25/e8/6425e87dabc2cd3965cf3702ed032f2d.jpg" alt="">
                         </div>
@@ -43,31 +45,35 @@
 
         <section class="second">
             <div class="container">
-                <h2 class="second__title">Some random information</h2>
-                <div class="second__image-w-text">
+                <h2 class="second__title">My Top 4 Laker Greats of All Time</h2>
+                <div class="second__image-w-text row">
                     <div class="item">
-                        <div class="second-image">
-                            <img src="" alt="">
+                        <div class="second__image">
+                            <img src="https://heavy.com/wp-content/uploads/2020/01/gettyimages-88227153-e1580525376554.jpg?quality=65&strip=all&w=780" alt="Kobe Bryant">
                         </div>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, ex.</p>
+                        <p class="t4-name">Kobe Bryant #24</p>
+                        <p>Top 1</p>
                     </div>
                     <div class="item">
-                        <div class="second-image">
-                            <img src="" alt="">
+                        <div class="second__image">
+                            <img src="https://i.pinimg.com/originals/19/c1/72/19c1723701643db0b8424725966ff5e0.jpg" alt="Kareem">
                         </div>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, ex.</p>
+                        <p class="t4-name">Kareem Abdul Jabar #33</p>
+                        <p>Top 2</p>
                     </div>
                     <div class="item">
-                        <div class="second-image">
-                            <img src="" alt="">
+                        <div class="second__image">
+                            <img src="http://1.bp.blogspot.com/-S86NhBrIHek/T2zynhL_Q3I/AAAAAAAAAPw/tyzeXn3DjEI/s1600/magic+pass.jpg" alt="magic">
                         </div>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, ex.</p>
+                        <p class="t4-name">Magic Johnson #32</p>
+                        <p>Top 3</p>
                     </div>
                     <div class="item">
-                        <div class="second-image">
-                            <img src="" alt="">
+                        <div class="second__image">
+                            <img src="https://i.pinimg.com/originals/7c/db/e4/7cdbe4f11d43a6a7f051f400f1574e50.jpg" alt="shaq">
                         </div>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, ex.</p>
+                        <p class="t4-name">Shaquille O'Neal #34</p>
+                        <p>Top 4</p>
                     </div>
                 </div>
             </div>
@@ -76,9 +82,9 @@
         <section class="third">
             <div class="container">
                 <blockquote>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, quos.</p>
-                    <p>By uyang the great</p>
+                    <p>"It's not about the number of hours you practice, it's about the number of hours your mind is present during the practice"</p>
                 </blockquote>
+                <span>- Kobe <b> "Black Mamba" </b> Bryant</span>
             </div>
         </section>
 
@@ -111,6 +117,7 @@
                 } else {
                     header.classList.remove('scrolled')
                 }
+                console.log(scrollY)
             } )
         </script>
 </body>
