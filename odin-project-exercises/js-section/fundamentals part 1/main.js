@@ -50,11 +50,11 @@ console.log(23 + 97)
 console.log(23 + 97 + 1 + 34 + 69 + 2)
 console.log((4 + 6 + 9) / 77) 
  
-let a = 10;
-console.log(a)
-console.log(9 * a)
+let anum = 10;
+console.log(anum)
+console.log(9 * anum)
 
-let b = 7 * a
+let b = 7 * anum
 console.log(b)
 
 
@@ -95,23 +95,152 @@ if (!(age >= 14 && age <= 90)
 }
 
 // 3. Check the login
-let user = prompt("Who's there?", '')
-let $admin = "uyang"
-let $pass = "69"
+// let user = prompt("Who's there?", '')
+// let $admin = "uyang"
+// let $pass = "69"
 
-if (user === $admin){
-    let pass = prompt('Password', '')
+// if (user === $admin){
+//     let pass = prompt('Password', '')
     
-    if(pass == $pass){
-        alert("Welcome")
-    } else if(pass == '' || pass == null) {
-        alert('Canceled')
-    } else if(pass !== $pass){
-        alert('Wrong Password')
-    }
-    
-} else if (user == '' || user == null){
-    alert('Canceled')
-} else if(user != $admin){
-    alert('I don\'t know you')
+//     if(pass == $pass){
+//         alert("Welcome")
+//     } else if(pass == '' || pass == null) {
+//         alert('Canceled')
+//     } else if(pass !== $pass){
+//         alert('Wrong Password')
+//     }
+
+// } else if (user == '' || user == null){
+//     alert('Canceled')
+// } else if(user != $admin){
+//     alert('I don\'t know you')
+// }
+
+
+/*
+
+    1. The name of JavaScript
+        Using the if..else construct, write the code which asks: ‘What is the “official” name of JavaScript?’
+        If the visitor enters “ECMAScript”, then output “Right!”, otherwise – output: “You don’t know? ECMAScript!”
+
+    2. Show the sign
+        Using if..else, write the code which gets a number via prompt and then shows in alert:
+            1, if the value is greater than zero,
+            -1, if less than zero,
+            0, if equals zero.
+        In this task we assume that the input is always a number.
+
+    3. Rewrite 'if' into '?'
+        Rewrite this if using the conditional operator '?':
+        let result;
+        if (a + b < 4) {
+        result = 'Below';
+        } else {
+        result = 'Over';
+        }
+
+    4. Rewrite 'if..else' into '?'
+        Rewrite if..else using multiple ternary operators '?'.
+        For readability, it’s recommended to split the code into multiple lines.
+        let message;
+        if (login == 'Employee') {
+        message = 'Hello';
+        } else if (login == 'Director') {
+        message = 'Greetings';
+        } else if (login == '') {
+        message = 'No login';
+        } else {
+        message = '';
+        }
+
+*/
+
+// 1. The name of JavaScript
+// let ans = prompt('What\'s the "official" name of JavaScript?')
+
+// if (ans == 'ECMAScript'){
+//     alert("Right!")
+// } else {
+//     alert('You don\'t know "ECMAScript"!')
+// }
+
+// 2. Show the sign
+// let ans = prompt('Enter a number', '')
+
+// if(ans > 0){
+//     alert(`${ans} = 1`)
+// } else if(ans < 0) {
+//     alert(`${ans} = -1`)
+// } else if (ans == 0){
+//     alert(`${ans} = 0`)
+// }
+
+// 3. Rewrite 'if' into '?'
+// let result = (a + b < 4) ? 'Below' : 'Over'
+
+// Rewrite 'if..else' into '?'
+// let message = (login == 'Employee')
+//              ? 'Hello' : (login == 'Director')
+//              ? 'Greetings' : (login = '') 
+//              ? 'No login' : ''
+
+
+/*
+
+    1. Rewrite the "switch" into an "if"
+        Write the code using if..else which would correspond to the following switch:
+        switch (browser) {
+        case 'Edge':
+            alert( "You've got the Edge!" );
+            break;
+        case 'Chrome':
+        case 'Firefox':
+        case 'Safari':
+        case 'Opera':
+            alert( 'Okay we support these browsers too' );
+            break;
+        default:
+            alert( 'We hope that this page looks ok!' );
+        }
+
+    2. Rewrite "if" into "switch"
+        Rewrite the code below using a single switch statement:
+        let a = +prompt('a?', '');
+        if (a == 0) {
+        alert( 0 );
+        }
+        if (a == 1) {
+        alert( 1 );
+        }
+        if (a == 2 || a == 3) {
+        alert( '2,3' );
+        }
+
+*/
+
+// 1. Rewrite the "switch" into an "if"
+// let browser = prompt('Enter your browser')
+
+// if (browser == 'Edge'){
+//     alert('You\'ve got the Edge!')
+// } else if (browser == 'Chrome' || browser == 'Firefox' || browser == 'Safari' || browser == 'Opera'){
+//     alert('Okay we support these browsers too')
+// } else {
+//     alert('We hope that this page looks ok!')
+// }
+
+// 2. Rewrite "if" into "switch"
+const $a = +prompt('a?', '')
+
+switch($a){
+    case 0:
+        alert(0)
+        break
+    case 1:
+        alert(1)
+        break
+    case 2:
+    case 3:
+        alert('2,3')
+        break
 }
