@@ -57,7 +57,7 @@ function checkWinner(playerSelection, computerSelection){
 }
 
 function logRound(playerChose, computerChose, winner, round){
-
+    console.log('---------------------------')
     console.log('Round:', round)
     console.log('Player chose:', playerChose)
     console.log('Computer chose:', computerChose)
