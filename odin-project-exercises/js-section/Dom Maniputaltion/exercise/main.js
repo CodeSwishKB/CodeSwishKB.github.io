@@ -27,3 +27,4 @@ container2.appendChild(para2)
 
 
 container.appendChild(container2)
+var a;
