@@ -5,3 +5,9 @@ body{
     align-items: center;
     flex-direction: column;
 }
+
+.display-result {
+    border: 1px solid black;
+    padding: 2em;
+    margin: 2em;
+}

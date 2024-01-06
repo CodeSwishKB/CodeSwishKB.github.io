@@ -4,27 +4,27 @@ let pScore = 0;
 let cScore = 0;
 
 let btns = document.querySelector('.btns')
+let elDisplay = document.querySelector('.display')
 
-btns.addEventListener('click', playRound)
+btns.addEventListener('click', getPlayerChoice)
 
 function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
-function validateChoices(choice){
-    if (choices.includes(choice)){
-        return true
-    } else {
-        return false
-    }
+function getPlayerChoice(e){
+    let val = e.target.value
+    e.preventDefault()
+    playRound(val)
+    elDisplay.classList.add('display-result')
 }
 
-function playRound(round){
-    const playerChoice = getPlayerChoice()
+function playRound(val, round){
+    const playerChoice = val
     const computerChoice = getComputerChoice()
     const winner = checkWinner(playerChoice, computerChoice)
     
-    logRound(playerChoice, computerChoice, winner, round)
+    displayRound(playerChoice, computerChoice, winner, round)
 }
 
 function checkWinner(playerSelection, computerSelection){
@@ -39,18 +39,30 @@ function checkWinner(playerSelection, computerSelection){
     }
 }
 
-function logRound(playerChose, computerChose, winner, round){
-    console.log('---------------------------')
-    console.log('Round:', round)
-    console.log('Player chose:', playerChose)
-    console.log('Computer chose:', computerChose)
-    console.log('Player score:',pScore, '; Computer Score:',cScore)
+function displayRound(playerChose, computerChose, winner, round){
+    let paraRound = document.createElement('p')
+    let paraPlayer = document.createElement('p')
+    let paraCom = document.createElement('p')
+    let paraDisplay = document.createElement('p')
+    let paraWinner = document.createElement('p')
+    
+
+    paraRound.textContent = `Round: ${round}`
+    paraPlayer.textContent = `Player Chose: ${playerChose}`
+    paraCom.textContent = `Computer Chose: ${computerChose}`
+    paraDisplay.textContent = `Player Score: ${pScore} vs Computer Score: ${cScore}`
+    paraWinner.textContent = `Player Score: ${pScore} vs Computer Score: ${cScore}`
     if (winner == "Tie"){
-        console.log("Tie game")
+        paraWinner.textContent = `Tie`
     } else {
-        console.log(winner, 'Wins the round')
+        paraWinner.textContent = `${winner} wins the round ${round}`
     }
-    console.log('---------------------------')
+
+    elDisplay.appendChild(paraRound)
+    elDisplay.appendChild(paraPlayer)
+    elDisplay.appendChild(paraCom)
+    elDisplay.appendChild(paraDisplay)
+    elDisplay.appendChild(paraWinner)
 
 }
 
@@ -65,11 +77,12 @@ function logResults(){
     logFinalResults(playerScore, computerScore)
 }
 
+
 function logFinalResults(playerScore, computerScore){
     if (playerScore === computerScore){
         console.log('Tie game')
-    } else if (playerScore > computerScore){
-        console.log('Player won the game!')
+    } else if (playerScore == 5){
+       return ('Player won the game!')
     } else {
         console.log('Ahww :(, Computer won the game')
     }
