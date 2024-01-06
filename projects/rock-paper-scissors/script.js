@@ -3,29 +3,12 @@ const btn = document.querySelector('button')
 let pScore = 0;
 let cScore = 0;
 
+let btns = document.querySelector('.btns')
+
+btns.addEventListener('click', playRound)
+
 function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)]
-}
-
-function getPlayerChoice(){
-    let input = prompt('Type rock, paper, scissors')
-    
-    while (input == null){
-        input = prompt('Please type and spell properly: "rock, paper, scissor"')
-    }
-    input.toLowerCase()
-    
-    let check = validateChoices(input)
-    while (check == false){ 
-        input = prompt('Please type and spell properly: "rock, paper, scissor"')
-        while (input == null){
-            input = prompt('Please type and spell properly: "rock, paper, scissor"')
-        }
-    input.toLowerCase()
-    check = validateChoices(input)
-    }
-
-    return input
 }
 
 function validateChoices(choice){
@@ -82,16 +65,6 @@ function logResults(){
     logFinalResults(playerScore, computerScore)
 }
 
-function game(){
-        for (let i = 1; i <= 5; i++){
-           if (pScore == 3 || cScore == 3){
-            return
-           }
-            playRound(i)
-         }
-    logResults()
-}
-
 function logFinalResults(playerScore, computerScore){
     if (playerScore === computerScore){
         console.log('Tie game')
@@ -102,4 +75,4 @@ function logFinalResults(playerScore, computerScore){
     }
 }
 
-btn.addEventListener('click', game)
+
