@@ -1,7 +1,7 @@
 const choices = ['Rock', "Paper", 'Scissors'] 
 let pScore = 0;
 let cScore = 0;
-
+var a
 let buttons = document.querySelectorAll('button')
 let elDisplay = document.querySelector('.display')
 let elPscore = document.querySelector('.pscore')
