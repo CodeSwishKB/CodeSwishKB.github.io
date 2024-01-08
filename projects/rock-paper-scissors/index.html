@@ -9,13 +9,43 @@
 <body>
     <h1>Rock Paper Scissors</h1>
     <div class="btns">
-        <button id="rock" value="rock">Rock</button>
-        <button id="paper" value="paper">Paper</button>
-        <button id="scissors" value="scissors">Scissors</button>
+        <button id="rock" value="Rock">Rock</button>
+        <button id="paper" value="Paper">Paper</button>
+        <button id="scissors" value="Scissors">Scissors</button>
     </div>
 
     <div class="display">
-        
+        <table>
+            <tr>
+                <td>Player Chose:</td>
+                <td class="pchose"></td>
+            </tr>
+            <tr>
+                <td>Computer Chose:</td>
+                <td class="cchose"></td>
+            </tr>
+            <tr>
+                <td>Win by:</td>
+                <td class="win"></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="scoreboard">
+        <h3 style="margin: 0;">SCORES</h3>
+        <table class="scoreboard-table">
+            <tr>
+                <td>Player </td>
+                <td  class="pscore">0</td>
+            </tr>
+            <tr>
+                <td>Computer</td>
+                <td class="cscore">0</td>
+            </tr>
+            <tr class="final-winner">
+                <td  colspan="2" style="text-align: center;"><span id="final-winner">Winner</span></td>
+            </tr>
+        </table>
     </div>
 </body>
 <script src="script.js"></script>

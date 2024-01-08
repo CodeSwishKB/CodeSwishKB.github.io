@@ -1,91 +1,75 @@
-const choices = ['rock', "paper", 'scissors'] 
-const btn = document.querySelector('button')
+const choices = ['Rock', "Paper", 'Scissors'] 
 let pScore = 0;
 let cScore = 0;
 
-let btns = document.querySelector('.btns')
+let buttons = document.querySelectorAll('button')
 let elDisplay = document.querySelector('.display')
+let elPscore = document.querySelector('.pscore')
+let elcscore = document.querySelector('.cscore')
+let scoreBoard = document.querySelector('.scoreboard')
 
-btns.addEventListener('click', getPlayerChoice)
+let pChose = document.querySelector('.pchose')
+let cChose = document.querySelector('.cchose')
+let win = document.querySelector('.win')
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.value
+        let computerSelection = getComputerChoice()
+        
+        if (pScore === 5 || cScore == 5){
+            displayFinalResults(pScore, cScore) 
+            return false
+        }
+
+        displayRound(playerSelection, computerSelection, playRound(playerSelection, computerSelection))
+    })
+
+})
 
 function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
-function getPlayerChoice(e){
-    let val = e.target.value
-    e.preventDefault()
-    playRound(val)
-    elDisplay.classList.add('display-result')
-}
-
-function playRound(val, round){
-    const playerChoice = val
-    const computerChoice = getComputerChoice()
-    const winner = checkWinner(playerChoice, computerChoice)
-    
-    displayRound(playerChoice, computerChoice, winner, round)
-}
-
-function checkWinner(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
-        return 'Tie'
-    } else if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') || (playerSelection == 'scissors' && computerSelection == 'paper')){
-        pScore += 1
+        return 'It\'s a Tie'
+    } else if ((playerSelection === 'Rock' && computerSelection === 'Scissors') || (playerSelection === 'Paper' && computerSelection === 'Rock') || (playerSelection === 'Scissors' && computerSelection === 'Paper')){
+        pScore++
         return 'Player'
     } else {
-        cScore += 1
+        cScore++
         return 'Computer'
     }
+
 }
 
-function displayRound(playerChose, computerChose, winner, round){
-    let paraRound = document.createElement('p')
-    let paraPlayer = document.createElement('p')
-    let paraCom = document.createElement('p')
-    let paraDisplay = document.createElement('p')
-    let paraWinner = document.createElement('p')
-    
+function displayRound(playerChose, computerChose, winner){
+    pChose.textContent = `${playerChose}`
+    cChose.textContent = `${computerChose}`
+    elPscore.textContent = `${pScore}`
+    elcscore.textContent = `${cScore}`
 
-    paraRound.textContent = `Round: ${round}`
-    paraPlayer.textContent = `Player Chose: ${playerChose}`
-    paraCom.textContent = `Computer Chose: ${computerChose}`
-    paraDisplay.textContent = `Player Score: ${pScore} vs Computer Score: ${cScore}`
-    paraWinner.textContent = `Player Score: ${pScore} vs Computer Score: ${cScore}`
-    if (winner == "Tie"){
-        paraWinner.textContent = `Tie`
+    if (winner == "It\'s a Tie"){
+        win.textContent = `It\'s a Tie!`
     } else {
-        paraWinner.textContent = `${winner} wins the round ${round}`
+        win.textContent = `${winner} wins the round!`
     }
-
-    elDisplay.appendChild(paraRound)
-    elDisplay.appendChild(paraPlayer)
-    elDisplay.appendChild(paraCom)
-    elDisplay.appendChild(paraDisplay)
-    elDisplay.appendChild(paraWinner)
-
 }
 
-function logResults(){
-    const playerScore = pScore;
-    const computerScore = cScore;
+function displayFinalResults(playerScore, computerScore){
+    let tableData = document.querySelector('#final-winner')
 
-    console.log('Results:')
-    console.log('Player Score:', playerScore)
-    console.log('Computer Score:', computerScore)
-
-    logFinalResults(playerScore, computerScore)
-}
-
-
-function logFinalResults(playerScore, computerScore){
     if (playerScore === computerScore){
         console.log('Tie game')
-    } else if (playerScore == 5){
-       return ('Player won the game!')
+    } else if (playerScore === 5){
+        tableData.textContent = `Player won!`
+        tableData.style.color = "green"
     } else {
-        console.log('Ahww :(, Computer won the game')
+        tableData.innerText = `Computer won!`
+        tableData.style.color = "red"
     }
+
 }
 
 
