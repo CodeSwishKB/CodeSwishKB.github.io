@@ -1,105 +1,75 @@
-const choices = ['rock', "paper", 'scissors'] 
-const btn = document.querySelector('button')
+const choices = ['Rock', "Paper", 'Scissors'] 
 let pScore = 0;
 let cScore = 0;
+var a
+let buttons = document.querySelectorAll('button')
+let elDisplay = document.querySelector('.display')
+let elPscore = document.querySelector('.pscore')
+let elcscore = document.querySelector('.cscore')
+let scoreBoard = document.querySelector('.scoreboard')
+
+let pChose = document.querySelector('.pchose')
+let cChose = document.querySelector('.cchose')
+let win = document.querySelector('.win')
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.value
+        let computerSelection = getComputerChoice()
+        
+        if (pScore === 5 || cScore == 5){
+            displayFinalResults(pScore, cScore) 
+            return false
+        }
+
+        displayRound(playerSelection, computerSelection, playRound(playerSelection, computerSelection))
+    })
+
+})
 
 function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
-function getPlayerChoice(){
-    let input = prompt('Type rock, paper, scissors')
-    
-    while (input == null){
-        input = prompt('Please type and spell properly: "rock, paper, scissor"')
-    }
-    input.toLowerCase()
-    
-    let check = validateChoices(input)
-    while (check == false){ 
-        input = prompt('Please type and spell properly: "rock, paper, scissor"')
-        while (input == null){
-            input = prompt('Please type and spell properly: "rock, paper, scissor"')
-        }
-    input.toLowerCase()
-    check = validateChoices(input)
-    }
-
-    return input
-}
-
-function validateChoices(choice){
-    if (choices.includes(choice)){
-        return true
-    } else {
-        return false
-    }
-}
-
-function playRound(round){
-    const playerChoice = getPlayerChoice()
-    const computerChoice = getComputerChoice()
-    const winner = checkWinner(playerChoice, computerChoice)
-    
-    logRound(playerChoice, computerChoice, winner, round)
-}
-
-function checkWinner(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
-        return 'Tie'
-    } else if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') || (playerSelection == 'scissors' && computerSelection == 'paper')){
-        pScore += 1
+        return 'It\'s a Tie'
+    } else if ((playerSelection === 'Rock' && computerSelection === 'Scissors') || (playerSelection === 'Paper' && computerSelection === 'Rock') || (playerSelection === 'Scissors' && computerSelection === 'Paper')){
+        pScore++
         return 'Player'
     } else {
-        cScore += 1
+        cScore++
         return 'Computer'
     }
+
 }
 
-function logRound(playerChose, computerChose, winner, round){
-    console.log('---------------------------')
-    console.log('Round:', round)
-    console.log('Player chose:', playerChose)
-    console.log('Computer chose:', computerChose)
-    console.log('Player score:',pScore, '; Computer Score:',cScore)
-    if (winner == "Tie"){
-        console.log("Tie game")
+function displayRound(playerChose, computerChose, winner){
+    pChose.textContent = `${playerChose}`
+    cChose.textContent = `${computerChose}`
+    elPscore.textContent = `${pScore}`
+    elcscore.textContent = `${cScore}`
+
+    if (winner == "It\'s a Tie"){
+        win.textContent = `It\'s a Tie!`
     } else {
-        console.log(winner, 'Wins the round')
+        win.textContent = `${winner} wins the round!`
     }
-    console.log('---------------------------')
-
 }
 
-function logResults(){
-    const playerScore = pScore;
-    const computerScore = cScore;
+function displayFinalResults(playerScore, computerScore){
+    let tableData = document.querySelector('#final-winner')
 
-    console.log('Results:')
-    console.log('Player Score:', playerScore)
-    console.log('Computer Score:', computerScore)
-
-    logFinalResults(playerScore, computerScore)
-}
-
-function game(){
-        for (let i = 1; i <= 5; i++){
-           if (pScore == 3 || cScore == 3){
-            return
-           }
-            playRound(i)
-         }
-    logResults()
-}
-
-function logFinalResults(playerScore, computerScore){
     if (playerScore === computerScore){
         console.log('Tie game')
-    } else if (playerScore > computerScore){
-        console.log('Player won the game!')
+    } else if (playerScore === 5){
+        tableData.textContent = `Player won!`
+        tableData.style.color = "green"
     } else {
-        console.log('Ahww :(, Computer won the game')
+        tableData.innerText = `Computer won!`
+        tableData.style.color = "red"
     }
+
 }
 
-btn.addEventListener('click', game)
+

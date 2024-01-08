@@ -5,3 +5,47 @@ body{
     align-items: center;
     flex-direction: column;
 }
+
+button {
+    border: none;
+    font-size: 1rem;
+    padding: .75em 1em;
+    letter-spacing: 3.5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: red;
+}
+
+.display-result {
+    border: 1px solid black;
+    padding: 2em;
+    margin: 2em;
+}
+
+.display table {
+    width: 100%
+}
+
+.display table, .display td, .display th {
+    padding: .75em;
+}
+
+.scoreboard {
+    position: absolute;
+    top: 40px;
+    right: 25%;
+    padding: .75em 1em;
+}
+
+.scoreboard-table, .scoreboard-table td, .scoreboard-table th{
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: .75em;
+}
+
+.pscore, .cscore{
+    text-align: left;
+}
+
