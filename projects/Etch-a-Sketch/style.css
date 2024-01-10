@@ -1,0 +1,39 @@
+
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0 auto;
+    background-color: bisque;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.sketch{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    /* border: 1px solid red; */
+
+}
+
+.flex-item {
+    border: 1px solid #ddd;
+
+}
+
+.flex-item:hover{
+    background-color: yellow;
+}
+
+.black{
+    background-color: black;
+}
