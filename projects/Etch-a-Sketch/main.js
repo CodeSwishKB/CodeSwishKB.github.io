@@ -8,36 +8,33 @@ let currentSize = DEFAULT_SIZE
 let currentMode = DEFAULT_MODE
 
 const sketch = document.querySelector('.sketch')
+const btnContainer = document.querySelector('.btn')
 const generateBtn = document.querySelector(".change-btn")
 const randBtn = document.querySelector('.random-btn')
 const defaultBtn = document.querySelector('.default-btn')
+const eraseBtn = document.querySelector('.erase-btn')
 
 sketch.style.width = `${GRIDWIDTH}px`
 sketch.style.height = `${GRIDHEIGHT}px`
 
 makeFlexRows(currentSize)
 
-function setCurrentMode(newMode){
-    currentMode = newMode
+let mouseDown = false
+document.body.onmousedown = () => {
+    mouseDown = true
+}  
+document.body.ontouchmove = () => {
+    mouseDown = true
+}  
+document.body.onmouseup = () => {
+    mouseDown = false
 }
-
-function addColor(e){
-    if (e.type === 'mouseover' && !mouseDown) return
-
-    if (currentMode === 'rainbow'){
-        e.target.style.backgroundColor = randomColor()
-    } else if (currentMode === 'color'){
-        e.target.style.backgroundColor = '#000'
-    }
-}
-
-function removeGrid(){
-    while(sketch.firstChild){
-        sketch.removeChild(sketch.firstChild)
-    }
+document.body.ontouchend = () => {
+    mouseDown = false
 }
 
 function makeFlexRows(square){
+
     const numOfSquares = (square * square)
     const width = `${(GRIDWIDTH / square) - 2}px`
     const height = `${(GRIDHEIGHT / square) - 2}px`
@@ -53,20 +50,49 @@ function makeFlexRows(square){
                 clickColor(addColor)
          
         }
-    
+}
+
+function setCurrentMode(newMode){
+    currentMode = newMode
+}
+
+function activeBtn(){
+    let btns = btnContainer.getElementsByClassName('btns')
+
+    for (let i = 0; i < btns.length; i++){
+        btns[i].addEventListener('click', function(){
+            let current = document.getElementsByClassName('active-btn')
+            current[0].className = current[0].className.replace(' active-btn', "")
+            this.className += " active-btn"
+            
+        })
+    }
+}
+
+function addColor(e){
+    if (e.type === 'mouseover' && !mouseDown) return
+    if (e.type === 'touchstart' && !mouseDown) return
+
+    if (currentMode === 'rainbow'){
+        e.target.style.backgroundColor = randomColor()
+    } else if (currentMode === 'color'){
+        e.target.style.backgroundColor = '#000'
+    } else if (currentMode === 'erase'){
+        e.target.style.backgroundColor = '#fff'
+    }
+}
+
+function removeGrid(){
+    while(sketch.firstChild){
+        sketch.removeChild(sketch.firstChild)
+    }
 }
 
 function clickColor(color){
     sketch.addEventListener('mouseover', color)
+    sketch.addEventListener('touchmove', color)
     sketch.addEventListener('mousedown', color)
-}
-
-let mouseDown = false
-document.body.onmousedown = () => {
-    mouseDown = true
-}  
-document.body.onmouseup = () => {
-    mouseDown = false
+    sketch.addEventListener('touchend', color)
 }
 
 function generateDivs(){
@@ -87,10 +113,10 @@ function randomColor(){
     return rgb
 }
 
-// randBtn.addEventListener('click', setCurrentMode('rainbow'))
-// defaultBtn.addEventListener('click', setCurrentMode('color'))
-
 randBtn.onclick = () => setCurrentMode('rainbow')
 defaultBtn.onclick = () => setCurrentMode('color')
+eraseBtn.onclick = () => setCurrentMode('erase')
 
+sketch.ondragstart = () => false
 generateBtn.addEventListener('click', generateDivs)
+activeBtn()
