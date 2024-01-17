@@ -14,18 +14,18 @@
     // Some data we can work with
 
     const inventors = [
-      { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
-      { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
-      { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
-      { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
-      { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
-      { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
-      { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
-      { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
-      { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
-      { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
-      { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
-      { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+      { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955, years_lived: 1955 - 1879},
+      { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727, years_lived: 1727 - 1643 },
+      { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642, years_lived: 1642 - 1564 },
+      { first: 'Marie', last: 'Curie', year: 1867, passed: 1934, years_lived: 1934 - 1867 },
+      { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630, years_lived: 1630 - 1571 },
+      { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543, years_lived: 1543 - 1473 },
+      { first: 'Max', last: 'Planck', year: 1858, passed: 1947, years_lived: 1947 - 1858 },
+      { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979, years_lived: 1979 - 1898 },
+      { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852, years_lived: 1852 - 1815 },
+      { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905, years_lived: 1905 - 1855 },
+      { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968, years_lived: 1968 - 1878 },
+      { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909, years_lived: 1909 - 1829 }
     ];
 
     const people = [
@@ -49,24 +49,53 @@
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
     const oldToYoung = inventors.sort((a, b) => a.year - b.year)
-    console.table(oldToYoung);
+    // console.table(oldToYoung);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    const sumLive = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year)
+    }, 0)
+    // console.log(sumLive)
 
     // 5. Sort the inventors by years lived
+    const yearsLived = inventors.sort((a, b) => {
+      let person1 = a.passed - a.year;
+      let person2 = b.passed - b.year;
+      return person2 - person1
+
+    })
+    // console.table(yearsLived)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // const category = document.querySelector('.mw-category')
+    // const links = [...category.querySelectorAll('a')]
 
+    // const blvd = links.map(link => link.textContent)
+    
+    // const deBlvd = blvd.filter(item => item.includes('de'))
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const sortLName = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(', ')
+      const [bLast, bFirst] = nextOne.split(', ')
+      return aLast > bLast ? -1 : 1
+    })
+    // console.table(sortLName)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    const sumInstances = data.reduce((obj, item) => {
+      if (!obj[item]){
+        obj[item] = 0;
+      }
+      obj[item]++
+      return obj
+    }, {})
+    // console.table(sumInstances)
   </script>
 </body>
 </html>
