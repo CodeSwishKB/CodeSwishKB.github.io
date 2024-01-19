@@ -366,6 +366,6 @@ let users = [
 ];
 let usersById = groupById(users);
 function groupById(arr){
-  return arr.reduce()
+  return arr.reduce(acc, )
 }
 console.log(usersById)
