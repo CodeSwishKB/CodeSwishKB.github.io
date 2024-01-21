@@ -366,6 +366,9 @@ let users = [
 ];
 let usersById = groupById(users);
 function groupById(arr){
-  return arr.reduce(acc, )
+  return arr.reduce((obj, val) => {
+    obj[val.id] = val
+    return obj
+  }, {})
 }
 console.log(usersById)
