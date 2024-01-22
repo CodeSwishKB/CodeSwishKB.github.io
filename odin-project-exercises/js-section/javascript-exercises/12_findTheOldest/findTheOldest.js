@@ -1,12 +1,16 @@
 const findTheOldest = function(arr) {
-    let ages = arr.map(age => age.yearOfDeath - age.yearOfBirth)
-    let a = arr.reduce((oldAge, person) => {
-        const oldest = oldAge.ages
-        const currPerson = person.ages
-
-        return oldest < currPerson ? arr.name : oldest
-    })
+  return arr.reduce((oldPerson, currPerson) => {
+    const oldestAge = getAge(oldPerson.yearOfBirth, oldPerson.yearOfDeath);
+    const currentAge = getAge(currPerson.yearOfBirth, currPerson.yearOfDeath);
+    return oldestAge < currentAge ? currPerson : oldPerson
+  })
 };
+
+// get the age of every person of if they are still alive
+function getAge(birth, death){
+  if(!death) death = new Date().getFullYear()
+  return death - birth
+}
 
 // Do not edit below this line
 module.exports = findTheOldest;

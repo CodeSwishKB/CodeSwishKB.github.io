@@ -1,0 +1,49 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1000px;
+    font-size: 2em;
+}
+
+h1{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+main {
+    border: 1px solid black;
+    margin: 1em 2em;
+    width: 400px
+}
+
+.container{
+    width: 85%;
+    margin: 1.5em auto;
+    max-width: 800px;
+}
+
+.display{
+    height: 60px;
+    /* border:  1px solid red; */
+    margin-bottom: 1em
+}
+
+.nums_ops{
+  /* border: 1px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.numop{
+    border: 1px solid black;
+    padding: .25em .5em;
+    margin: .25em 
+}
