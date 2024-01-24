@@ -1,11 +1,67 @@
-const numsOp = document.querySelectorAll('.numop')
+const elDisplay = document.querySelector('.display') 
 
-let forEach = function(array, callback, scope){
-    for (let i = 0; i < array.length; i++){
-        callback.call(scope, i, array[i])
+let firstNum  = ""
+let op = ""
+let secondNum = ""
+
+const numsBtn = document.querySelectorAll('.numop') 
+const operatorsBtn = document.querySelectorAll('.operator') 
+const equalBtn = document.querySelector('.equal')
+const decBtn = document.querySelector('.dec')
+const clearBtn = document.querySelector('.clear')
+
+equalBtn.addEventListener("click", operate)
+
+numsBtn.forEach((numBtn) => {
+    numBtn.addEventListener('click', (e) => {
+        handlerNum(e.target.textContent)
+    })
+})
+
+function handlerNum(num){
+    if(firstNum.length <= 11){
+        firstNum += num
+        elDisplay.textContent = firstNum
     }
 }
 
-forEach(numsOp, function(index, value){
-    console.log(index, value)
+operatorsBtn.forEach(operatorBtn => {
+    operatorBtn.addEventListener('click', (e) => {
+        handleOperator(e.target.textContent)
+    })
 })
+
+function handleOperator(ops){
+    op = ops
+    firstNum = secondNum
+    elDisplay.textContent = `${firstNum} ${op} `
+}
+
+function operate(){    
+    firstNum = Number(firstNum)
+    secondNum = Number(secondNum)
+  
+        switch(op){
+            case '+':
+                 firstNum += secondNum
+                break;
+            
+            case '-':
+                firstNum -= secondNum
+                break;
+            
+            case '*':
+                firstNum *= secondNum
+                break;
+    
+            case '/':
+                if (secondNum == 0){
+                    console.log('Can\'t divide by 0 ')  
+                }  else {
+                    firstNum /= secondNum
+                } 
+        }
+        elDisplay.textContent = firstNum
+        console.log(firstNum)
+        console.log(secondNum)
+}

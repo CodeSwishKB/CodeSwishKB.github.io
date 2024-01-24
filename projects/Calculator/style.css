@@ -32,7 +32,8 @@ main {
 .display{
     height: 60px;
     /* border:  1px solid red; */
-    margin-bottom: 1em
+    margin-bottom: 1em;
+    text-align: right;
 }
 
 .nums_ops{
@@ -40,10 +41,10 @@ main {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  cursor: pointer;
 }
 
-.numop{
-    border: 1px solid black;
-    padding: .25em .5em;
-    margin: .25em 
+.nums_ops-btn{
+    margin: 0.25em;
+    padding: 0.25em 1em
 }
