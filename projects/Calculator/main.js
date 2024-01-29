@@ -1,129 +1,157 @@
-const elDisplay = document.querySelector('.display') 
+const elDisplay = document.querySelector(".display");
+const numsBtn = document.querySelectorAll(".numop");
+const operatorsBtn = document.querySelectorAll(".operator");
+const equalBtn = document.querySelector(".equal");
+const decBtn = document.querySelector(".dec");
+const bsBtn = document.querySelector(".bs");
+const clearBtn = document.querySelector(".clear");
 
-let firstNum  = ""
-let op = ""
-let secondNum = ""
+let firstNum = "";
+let op = "";
+let secondNum = "";
 
-const numsBtn = document.querySelectorAll('.numop') 
+window.addEventListener("keydown", handleKeypress);
+equalBtn.addEventListener("click", checker);
+decBtn.addEventListener("click", decimal);
+bsBtn.addEventListener("click", back);
+clearBtn.addEventListener("click", clearNum);
 
-const operatorsBtn = document.querySelectorAll('.operator') 
+numsBtn.forEach((numBtn) => {
+  numBtn.addEventListener("click", (e) => {
+    handlerNum(e.target.textContent);
+  });
+});
 
-const equalBtn = document.querySelector('.equal')
-equalBtn.addEventListener("click", () => {
-    if(secondNum != "" && firstNum != ""){
-        operate()
+operatorsBtn.forEach((operatorBtn) => {
+  operatorBtn.addEventListener("click", (e) => {
+    handleOperator(e.target.textContent);
+  });
+});
+
+function handleKeypress(e) {
+  e.preventDefault();
+  if (e.key >= 0 && e.key <= 9) {
+    handlerNum(e.key);
+    // e.keyCode.style.backgroundColor = "yellow";
+  }
+  if (
+    e.key === "Enter" ||
+    (e.key === "=" && secondNum != "" && firstNum != "")
+  ) {
+    operate();
+  }
+  if (e.key === "+" || e.key === "-" || e.key === "/") {
+    handleOperator(e.key);
+  }
+  if (e.key === "*") {
+    handleOperator("x");
+  }
+  if (e.key === ".") {
+    decimal();
+  }
+  if (e.key === "Backspace") {
+    back();
+  }
+}
+
+function checker() {
+  if (secondNum != "" && firstNum != "") {
+    operate();
+  }
+}
+
+function back() {
+  if (secondNum !== "") {
+    secondNum = secondNum.slice(0, -1);
+    elDisplay.textContent = secondNum;
+    if (secondNum === "") {
+      elDisplay.textContent = "0";
     }
-})
-
-const decBtn = document.querySelector('.dec')
-decBtn.addEventListener('click', decimal)
-
-const bsBtn = document.querySelector('.bs')
-bsBtn.addEventListener('click', back)
-function back(){    
-    return bsBtn.substr(0, bsBtn.length - 1);
+  }
 }
 
-const clearBtn = document.querySelector('.clear')
-clearBtn.addEventListener('click', clearNum)
-
-    numsBtn.forEach((numBtn) => {
-        numBtn.addEventListener('click', (e) => {
-            handlerNum(e.target.textContent)
-        })
-    })
-
-
-    operatorsBtn.forEach(operatorBtn => {
-        operatorBtn.addEventListener('click', (e) => {
-            handleOperator(e.target.textContent)
-        })
-    })
-    
-    function handlerNum(num){
-        if(firstNum !== "" && secondNum !== "" && op !== ""){
-            elDisplay.textContent = secondNum
-        }
-        if(secondNum.length <= 11){
-            secondNum += num
-            elDisplay.textContent = secondNum
-        }
-    }
-
-function handleOperator(ops){
-    if (firstNum === ""){
-        firstNum = secondNum
-        operatorCheck(ops)
-    } else if (secondNum === ""){
-        operatorCheck(ops)
-    } else {
-        operate()
-        op = ops
-        
-    }
+function handlerNum(num) {
+  if (firstNum !== "" && secondNum !== "" && op !== "") {
+    elDisplay.textContent = secondNum;
+  }
+  if (secondNum.length <= 11) {
+    secondNum += num;
+    elDisplay.textContent = secondNum;
+  }
 }
 
-function operatorCheck(text){
-    op = text
-    elDisplay.textContent =  `${firstNum} ${op}`
-    secondNum = ""
+function handleOperator(ops) {
+  if (firstNum === "") {
+    firstNum = secondNum;
+    operatorCheck(ops);
+  } else if (secondNum === "") {
+    operatorCheck(ops);
+  } else {
+    operate();
+    op = ops;
+  }
 }
 
-function operate(){    
-    firstNum = Number(firstNum)
-    secondNum = Number(secondNum)
-
-    switch(op){
-        case '+':
-            firstNum += secondNum
-            break;
-            
-        case '-':
-            firstNum -= secondNum
-            break;
-        
-        case 'x':
-            firstNum *= secondNum
-            break;
-    
-        case '÷':
-            if (secondNum <= 0){
-                firstNum = 'Can\'t divide by 0 '
-                displayResult()
-                return
-            } 
-            firstNum /= secondNum
-            break
-    }
-    firstNum = roundNumber(firstNum)
-    firstNum = firstNum.toString()
-    displayResult()
+function operatorCheck(text) {
+  op = text;
+  elDisplay.textContent = `${firstNum} ${op}`;
+  secondNum = "";
 }
 
-function roundNumber(num){
-    return Math.round(num * 100000) / 100000
+function operate() {
+  firstNum = Number(firstNum);
+  secondNum = Number(secondNum);
+
+  switch (op) {
+    case "+":
+      firstNum += secondNum;
+      break;
+
+    case "-":
+      firstNum -= secondNum;
+      break;
+
+    case "x":
+      firstNum *= secondNum;
+      break;
+
+    case "÷":
+      if (secondNum <= 0) {
+        firstNum = "Can't divide by 0 ";
+        displayResult();
+        return;
+      }
+      firstNum /= secondNum;
+      break;
+  }
+  firstNum = roundNumber(firstNum);
+  firstNum = firstNum.toString();
+  displayResult();
 }
 
-function displayResult(){
-    if(firstNum.length <= 11){
-        elDisplay.textContent = firstNum
-    } else {
-        elDisplay.textContent = firstNum.slice(0, 11) + '...'
-    }
-    op = ""
-    secondNum = ""
+function roundNumber(num) {
+  return Math.round(num * 100000) / 100000;
 }
 
-function clearNum(){
-    firstNum = ""
-    secondNum = ""
-    elDisplay.textContent = "0"
+function displayResult() {
+  if (firstNum.length <= 11) {
+    elDisplay.textContent = firstNum;
+  } else {
+    elDisplay.textContent = firstNum.slice(0, 11) + "...";
+  }
+  op = "";
+  secondNum = "";
 }
 
-function decimal(){
-    if(!secondNum.includes('.')){
-        secondNum += '.'
-        elDisplay.textContent = secondNum
-    }
+function clearNum() {
+  firstNum = "";
+  secondNum = "";
+  elDisplay.textContent = "0";
 }
 
+function decimal() {
+  if (!secondNum.includes(".")) {
+    secondNum += ".";
+    elDisplay.textContent = secondNum;
+  }
+}
