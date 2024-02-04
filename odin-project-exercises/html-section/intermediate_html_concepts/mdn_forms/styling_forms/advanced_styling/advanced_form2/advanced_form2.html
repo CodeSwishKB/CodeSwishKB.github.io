@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Advanced styling: Task 2</title>
+    <style>
+      body {
+        background-color: #fff;
+        color: #333;
+        font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 1em;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      button,
+      input,
+      select {
+        font-family: inherit;
+        font-size: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li + li {
+        margin-top: 1em;
+      }
+
+      input[type="radio"] {
+        outline: none;
+        appearance: none;
+      }
+
+      input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        border: 2px solid gray;
+        vertical-align: -3px;
+      }
+
+      input[type="radio"]::before {
+        display: block;
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 6px;
+        background-color: blueviolet;
+        font-size: 2em;
+        transform: translate(3px, 3px) scale(0);
+        transform-origin: center;
+        transition: all 0.2s ease-in-out;
+      }
+
+      input[type="radio"]:checked::before {
+        transform: translate(3px, 3px) scale(1);
+        transition: all 0.2s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <fieldset>
+        <legend>Who is your favorite pony?</legend>
+        <ul>
+          <li>
+            <input type="radio" id="pinkie" name="pony" value="pinkie" />
+            <label for="pinkie">Pinkie Pie</label>
+          </li>
+          <li>
+            <input type="radio" id="rainbow" name="pony" value="rainbow" />
+            <label for="rainbow">Rainbow Dash</label>
+          </li>
+          <li>
+            <input type="radio" id="twilight" name="pony" value="twilight" />
+            <label for="twilight">Twilight Sparkle</label>
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+  </body>
+</html>

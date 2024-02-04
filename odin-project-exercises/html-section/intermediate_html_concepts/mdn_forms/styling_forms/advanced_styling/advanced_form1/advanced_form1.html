@@ -23,15 +23,39 @@
         font-size: 100%;
         padding: 0;
         margin: 0;
+        outline: 1px solid transparent;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       input[type="search"] {
         appearance: none;
+        min-height: 2.4em;
+        width: 80%;
+        font-size: 1.5rem;
+        border-radius: 100px;
+        border: 1px solid black;
+        cursor: pointer;
       }
 
-      /* input[type="search"]:not(:focus, :active)::-webkit-search-cancel-button {
+      input[type="search"]:hover,
+      input[type="search"]:focus {
+        border: 1px solid yellow;
+      }
+
+      input[type="search"]:not(:focus, :active)::-webkit-search-cancel-button {
         display: none;
-      } */
+      }
+
+      div {
+        position: absolute;
+        right: 13%;
+        top: 5%;
+      }
     </style>
   </head>
 
@@ -43,7 +67,9 @@
         id="search"
         aria-label="Search our site"
       />
-      <div></div>
+      <div>
+        <img src="search-24px.png" alt="" />
+      </div>
     </form>
   </body>
 </html>
