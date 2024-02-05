@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form validation: Task 1</title>
+    <style>
+      body {
+        background-color: #fff;
+        color: #333;
+        font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 1em;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      form {
+        margin: 0 auto;
+        width: min(500px, 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li + li {
+        margin-top: 1em;
+      }
+
+      input,
+      button,
+      textarea {
+        width: 100%;
+        outline: 1px solid transparent;
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      input:invalid {
+        border: 2px solid red;
+      }
+
+      input:valid {
+        border: 2px solid green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <h2>Enter your support query</h2>
+      <ul>
+        <li>
+          <label for="uname">User name:</label>
+          <input
+            type="text"
+            name="uname"
+            id="uname"
+            minlength="5"
+            maxlength="20"
+            required
+          />
+        </li>
+        <li>
+          <label for="email">Email address:</label>
+          <input type="email" name="email" id="email" required />
+        </li>
+        <li>
+          <label for="phone">Phone number:</label>
+          <input type="tel" name="phone" id="phone" maxlength="15" required />
+        </li>
+        <li>
+          <label for="comment">Comment:</label>
+          <textarea
+            name="comment"
+            id="comment"
+            maxlength="200"
+            rows="10"
+            cols="10"
+            resize="none"
+            required
+          >
+          </textarea>
+        </li>
+        <li>
+          <button>Submit comment</button>
+        </li>
+      </ul>
+    </form>
+  </body>
+</html>
