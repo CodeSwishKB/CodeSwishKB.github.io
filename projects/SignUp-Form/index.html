@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sign Up Form</title>
+  </head>
+  <body>
+    <main>
+      <aside>
+        <div class="logo-title">
+          <img src="assets/odin-lined.png" alt="odin-project logo" />
+          <h1>ODIN</h1>
+        </div>
+        <p>
+          Photo by
+          <a
+            href="https://unsplash.com/@haliewestphoto"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Hailey West
+          </a>
+          on
+          <a href="https://unsplash.com/" rel="noreferrer" target="_blank">
+            Unsplash</a
+          >
+        </p>
+      </aside>
+
+      <section>
+        <header>
+          <p>
+            This is not a real online service! You know you need something like
+            this in your life to you realize your deepest dreams. Sign up now to
+            get started
+          </p>
+          <p>You know you want to.</p>
+        </header>
+
+        <form class="form" action="">
+          <h3>Let's do this!</h3>
+          <div class="form__infos">
+            <div class="form__info">
+              <div class="form__info-item">
+                <label for="fname">first name</label>
+                <input
+                  id="fname"
+                  type="text"
+                  required
+                  aria-required="true"
+                  name="fname"
+                />
+              </div>
+              <div class="form__info-item">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  aria-required="true"
+                  name="email"
+                />
+              </div>
+              <div class="form__info-item">
+                <label for="pwd">password</label>
+                <input
+                  id="pwd"
+                  type="password"
+                  required
+                  aria-required="true"
+                  name="pwd"
+                />
+              </div>
+            </div>
+            <div class="form__info">
+              <div class="form__info-item">
+                <label for="lname">Last name</label>
+                <input
+                  id="lname"
+                  type="text"
+                  required
+                  aria-required="true"
+                  name="lname"
+                />
+              </div>
+              <div class="form__info-item">
+                <label for="phone_number">Phone number</label>
+                <input
+                  id="phone_number"
+                  type="tel"
+                  required
+                  aria-required="true"
+                  name="phone_number"
+                />
+              </div>
+              <div class="form__info-item">
+                <label for="confirm_pwd">confirm password</label>
+                <input
+                  id="confirm_pwd"
+                  type="password"
+                  required
+                  aria-required="true"
+                  name="confirm_pwd"
+                />
+              </div>
+            </div>
+          </div>
+          <button type="submit">Submit</button>
+          <p>Already have an account? <a href="">Log In</a></p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
