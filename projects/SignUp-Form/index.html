@@ -45,7 +45,14 @@
             <div class="form__info">
               <div class="form__info-item">
                 <label for="fname">first name</label>
-                <input id="fname" type="text" name="fname" required />
+                <input
+                  id="fname"
+                  type="text"
+                  name="fname"
+                  required
+                  pattern="^[a-zA-Z]{2,}$"
+                  title="2 or more characters, Only alphabet not numbers, symbols etc."
+                />
                 <small>Error message</small>
               </div>
               <div class="form__info-item">
@@ -68,7 +75,14 @@
             <div class="form__info">
               <div class="form__info-item">
                 <label for="lname">Last name</label>
-                <input id="lname" type="text" name="lname" required />
+                <input
+                  id="lname"
+                  type="text"
+                  name="lname"
+                  required
+                  pattern="^[a-zA-Z]{2,}$"
+                  title="2 or more characters, Only alphabet not numbers, symbols etc."
+                />
                 <small>Error message</small>
               </div>
               <div class="form__info-item">
