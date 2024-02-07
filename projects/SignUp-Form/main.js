@@ -32,6 +32,16 @@ function showSuccess(input) {
   formControl.className = "form__info-item success";
 }
 
+function checkEmail(input) {
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (re.test(input.value.trim())) {
+    showSuccess(input);
+  } else {
+    showError(input, "Email is not invalid");
+  }
+}
+
 function checkPasswordMatch(input1, input2) {
   if (input1.value !== input2.value) {
     showErrorPwd(
@@ -39,16 +49,16 @@ function checkPasswordMatch(input1, input2) {
       input2,
       "* Please check it again",
       "* Password do not match"
-      );
-    }
+    );
   }
-  
-  function getFieldName(input) {
-    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-  }
-  
-  function checkFields(inputArr) {
-    inputArr.forEach((input) => {
+}
+
+function getFieldName(input) {
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
+function checkFields(inputArr) {
+  inputArr.forEach((input) => {
     if (input.value.trim() === "") {
       showError(input, `${getFieldName(input)} must put`);
     } else {
@@ -57,10 +67,30 @@ function checkPasswordMatch(input1, input2) {
   });
 }
 
+function checkLength(input, min, max) {
+  if (input.value.length < min) {
+    showError(
+      input,
+      `${getFieldName(input)} must be at least ${min} characters`
+    );
+  } else if (input.value.length > max) {
+    showError(
+      input,
+      `${getFieldName(input)} must be les than ${max} characters`
+    );
+  } else {
+    showSuccess(input);
+  }
+}
+
 form.addEventListener("submit", validate);
 
 function validate(e) {
   e.preventDefault();
+  checkLength(fname, 2, 20);
+  checkLength(lname, 2, 20);
+  checkEmail(email);
+  checkLength(pwd, 8, 20);
   checkFields(inputs);
   checkPasswordMatch(pwd, confirmPwd);
   console.log("submit");
