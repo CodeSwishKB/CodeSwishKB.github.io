@@ -45,11 +45,13 @@
             <div class="form__info">
               <div class="form__info-item">
                 <label for="fname">first name</label>
-                <input id="fname" type="text" name="fname" />
+                <input id="fname" type="text" name="fname" required />
+                <small>Error message</small>
               </div>
               <div class="form__info-item">
                 <label for="email">Email</label>
-                <input id="email" type="email" name="email" />
+                <input id="email" type="email" name="email" required />
+                <small>Error message</small>
               </div>
               <div class="form__info-item">
                 <label for="pwd">password</label>
@@ -60,17 +62,24 @@
                   aria-required="true"
                   name="pwd"
                 />
-                <span class="pwd"></span>
+                <small>Error message</small>
               </div>
             </div>
             <div class="form__info">
               <div class="form__info-item">
                 <label for="lname">Last name</label>
-                <input id="lname" type="text" name="lname" />
+                <input id="lname" type="text" name="lname" required />
+                <small>Error message</small>
               </div>
               <div class="form__info-item">
                 <label for="phone_number">Phone number</label>
-                <input id="phone_number" type="tel" name="phone_number" />
+                <input
+                  id="phone_number"
+                  type="tel"
+                  name="phone_number"
+                  required
+                />
+                <small>Error message</small>
               </div>
               <div class="form__info-item">
                 <label for="confirm_pwd">confirm password</label>
@@ -81,11 +90,12 @@
                   aria-required="true"
                   name="confirm_pwd"
                 />
-                <span class="cpwd"></span>
+                <small>Error message</small>
               </div>
             </div>
           </div>
           <div class="end">
+            <!-- <div class="errorMessage"></div> -->
             <button type="submit">Create Account</button>
             <p>Already have an account? <a href="">Log In</a></p>
           </div>
@@ -93,19 +103,5 @@
       </section>
     </main>
   </body>
-  <script>
-    const btn = document.querySelector("button");
-
-    btn.addEventListener("submit", validate);
-
-    function validate(e) {
-      e.preventDefault();
-      let pwd = document.querySelector('input[id="pwd"]');
-      let confirmPwd = document.querySelector('input[id="confirm_pwd"]');
-      let cpwd = document.querySelector(".cpwd");
-
-      if (pwd.value == confirmPwd.value) return;
-      else cpwd.classList.add("confirm_pwd");
-    }
-  </script>
+  <script src="main.js  "></script>
 </html>

@@ -11,6 +11,9 @@
   --primary-ff: "Roboto", sans-serif;
   --secondary-ff: "norse", sans-serif;
 
+  --error-clr: #e74c3c;
+  --success-clr: #2ecc71;
+
   --fw-400: 400;
   --fw-500: 500;
   --fw-700: 700;
@@ -129,8 +132,12 @@ textarea {
   box-sizing: border-box;
 }
 
+.form__info-item {
+  position: relative;
+}
+
 .form__info-item + .form__info-item {
-  margin-top: 1em;
+  margin-top: 1.75em;
 }
 
 .form__info-item input {
@@ -145,30 +152,24 @@ textarea {
   box-shadow: 0 3px 15px 5px rgba(0, 0, 0, 0.2);
 }
 
-input + span {
-  position: relative;
-}
-
-input[type="password"]:invalid {
-  border: 1px solid red;
-}
-
-input[type="password"]:invalid + .pwd::after {
-  content: "*\00a0Password do not match";
-  font-size: 0.85rem;
-  color: red;
+.form__info-item small {
+  color: var(--error-clr);
   position: absolute;
-  bottom: -23px;
-  left: -300px;
+  bottom: -20px;
+  left: 5px;
+  visibility: hidden;
 }
 
-.confirm_pwd::after {
-  content: "*\00a0Password do not match";
-  font-size: 0.85rem;
-  color: red;
-  position: absolute;
-  bottom: -23px;
-  left: -300px;
+.form__info-item.error small {
+  visibility: visible;
+}
+
+.form__info-item.success input {
+  border: 2px solid var(--success-clr) !important;
+}
+
+.form__info-item.error input {
+  border: 2px solid var(--error-clr) !important;
 }
 
 .end {
@@ -185,6 +186,12 @@ button {
   font-weight: var(--fw-700);
   border-radius: 5px;
   margin-bottom: 1em;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  filter: brightness(50%);
 }
 
 .end a {
