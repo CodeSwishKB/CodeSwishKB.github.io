@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+:root {
+  --primary-ff: "Roboto", sans-serif;
+
+  --aside-bg-clr: #1992d4;
+  --main--bg-clr: #e2e8f0;
+  --card-accent-clr: #f0b42b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--primary-ff);
+}
+
+body {
+  /* margin: 0; */
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, fr);
+  grid-template-rows: repeat(3, fr);
+}
+
+.header {
+  grid-column: 2 / 4;
+}
+
+.aside {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+}
+
+.content {
+  grid-column: 2 / 4;
+}
