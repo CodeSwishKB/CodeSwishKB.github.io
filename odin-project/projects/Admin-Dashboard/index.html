@@ -9,24 +9,34 @@
   <body>
     <div class="wrapper">
       <header class="header">
-        <div class="header__search-user">
+        <div class="header__upper">
           <div class="header__search">
+            <img class="search-icon" src="assets/icons/magnify.svg" alt="search-icon">
             <input type="search" name="" id="" />
           </div>
-          <div class="header__user">
-            <p>Hi there</p>
-            <h2 class="user-fullname">
-              Morgan Oakley <span class="header__username">(@morgan)</span>
-            </h2>
-          </div>
+          <div class="header__notif">
+            <div><img  class="search-icon"  src="assets/icons/bell-ring.svg" alt=""></div>
+            <div class="profile-pic">
+             <img src="assets/profile-pic.svg" alt="">
+           </div>
+             <div>
+               <p class="notif-user__fullname">Morgan Oakley</p>
+             </div>
+           </div>
         </div>
-        <div class="notif-user">
-          <div class="notif">
-            <!-- / icon -->
-            <!-- / image -->
-            <p class="notif-user__fullname"></p>
+        <div class="header__lower">
+          <div class="header__user">
+            <div class="profile-pic">
+              <img src="assets/profile-pic.svg" alt="">
+            </div>
+            <div class="header__text">
+              <p>Hi there,</p>
+              <h2 class="user-fullname">
+                Morgan Oakley <span class="header__username">(@morgan)</span>
+              </h2>
+            </div>
           </div>
-          <div class="notif-user__btns">
+          <div class="header__btns">
             <button>New</button>
             <button>Upload</button>
             <button>Share</button>
@@ -34,48 +44,53 @@
         </div>
       </header>
       <aside class="aside">
-        <div class="aside__title">
-          <!-- / icon -->
+        <div class="aside__title row">
+         <img class="filter-white-big-icon" src="assets/icons/view-dashboard.svg" alt="Dashboard icon">
+            <title>view-dashboard</title>
+            <path
+              d="M13,3V9H21V3M13,21H21V11H13M3,21H11V15H3M3,13H11V3H3V13Z"
+            />
+          </svg>
           <h2>Dashboard</h2>
         </div>
         <nav class="aside__nav">
           <ul class="aside__upper-nav-list">
             <li class="aside__upper-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/home-variant.svg" alt="home icon">
               <p>Home</p>
             </li>
             <li class="aside__upper-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/card-account-details.svg" alt="profile icon">
               <p>Profile</p>
             </li>
             <li class="aside__upper-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/message.svg" alt="message icon">
               <p>Message</p>
             </li>
             <li class="aside__upper-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/clock.svg" alt="history icon">
               <p>History</p>
             </li>
             <li class="aside__upper-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/file-multiple.svg" alt="task icon">
               <p>Task</p>
             </li>
             <li class="aside__upper-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/account-group.svg" alt="Communities icon">
               <p>Communities</p>
             </li>
           </ul>
           <ul class="aside__lower-nav-list">
             <li class="aside__lower-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/cog.svg" alt="settings icon">
               <p>Settings</p>
             </li>
             <li class="aside__lower-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/help-box.svg" alt="Support icon">
               <p>Support</p>
             </li>
             <li class="aside__lower-nav-list-items">
-              <!-- / icon -->
+             <img class="filter-white" src="assets/icons/shield-check.svg" alt="Privacy icon">
               <p>Privacy</p>
             </li>
           </ul>
