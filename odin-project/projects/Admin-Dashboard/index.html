@@ -44,7 +44,7 @@
         </div>
       </header>
       <aside class="aside">
-        <div class="aside__title row">
+        <div class="aside__title nav-toggle">
          <img class="filter-white-big-icon" src="assets/icons/view-dashboard.svg" alt="Dashboard icon">
             <title>view-dashboard</title>
             <path
@@ -207,7 +207,7 @@
             </div>
           </article>
           <article class="trending">
-            <p class="title">Trending</p>
+            <p class="title title--trending">Trending</p>
             <div class="trending__card">
               <div class="trending__card-item">
                 <div class="profile-pic"><img src="assets/jordan.svg" alt=""></div>
@@ -243,4 +243,13 @@
       </main>
     </div>
   </body>
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.aside__nav');
+
+
+navToggle.addEventListener('click', () => {
+    nav.classList.toggle('nav--visible');
+})
+  </script>
 </html>

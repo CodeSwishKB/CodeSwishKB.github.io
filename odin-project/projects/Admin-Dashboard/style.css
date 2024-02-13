@@ -14,13 +14,6 @@
   box-sizing: border-box;
 }
 
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-}
-
 html {
   font-family: var(--primary-ff);
 }
@@ -35,8 +28,8 @@ body {
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, fr);
-  grid-template-rows: repeat(3, fr);
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-auto-rows: auto;
 }
 
 .header {
@@ -81,7 +74,7 @@ body {
 }
 
 .profile-pic {
-  width: 15%;
+  width: 50px;
 }
 
 .profile-pic img {
@@ -107,6 +100,7 @@ body {
 .header__lower {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header__notif {
@@ -153,6 +147,10 @@ body {
 }
 
 .aside__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
   margin-bottom: 1.75em;
 }
 
@@ -173,7 +171,6 @@ body {
 .aside ul {
   font-weight: bold;
   margin: 0;
-  padding: 0;
   margin-bottom: 3em;
 }
 
@@ -226,7 +223,7 @@ body {
 
 .projects__grid-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1em;
 }
 
@@ -257,7 +254,7 @@ body {
   gap: 1em;
   position: absolute;
   bottom: 10%;
-  right: 35%;
+  right: 37%;
 }
 
 .content__aside {
@@ -311,4 +308,57 @@ body {
 .trending__card-username {
   font-weight: 900;
   margin-bottom: 0;
+}
+
+.title--trending {
+  margin: 0;
+}
+
+@media (max-width: 56.25em) {
+  * {
+    font-size: 0.95rem;
+  }
+  .wrapper {
+    display: unset;
+    grid-template-columns: unset;
+    grid-auto-rows: auto;
+  }
+
+  .header__btns {
+    gap: 0.5em;
+  }
+
+  .header__btns button {
+    padding: 0.5em 1em;
+  }
+
+  .aside {
+    padding-right: 0;
+  }
+
+  .aside__title {
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .aside ul {
+    margin-bottom: 0;
+  }
+
+  .aside__nav {
+    margin-top: 1em;
+    visibility: hidden;
+    height: 0;
+    position: absolute;
+  }
+
+  .aside__lower-nav-list {
+    margin: 0;
+  }
+
+  .nav--visible {
+    visibility: visible;
+    height: auto;
+    position: relative;
+  }
 }
