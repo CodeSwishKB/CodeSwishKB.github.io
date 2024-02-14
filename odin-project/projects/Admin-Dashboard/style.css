@@ -362,3 +362,38 @@ body {
     position: relative;
   }
 }
+
+@media (max-width: 28.125em) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .header__notif {
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+
+  .header__user {
+    order: 2;
+  }
+
+  .header__upper,
+  .header__lower {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__upper {
+    gap: 1em;
+  }
+}
+
+@media (max-width: 26.875em) {
+  .content {
+    display: block;
+  }
+}
