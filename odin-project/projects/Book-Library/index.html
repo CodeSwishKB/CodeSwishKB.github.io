@@ -9,40 +9,46 @@
   <body>
     <main>
       <table>
-        <tr>
-          <th id="author">Author</th>
-          <th id="title">Title</th>
-          <th id="numOfPage">Number of Pages</th>
-          <th id="readOrNot">Read or Not</th>
-        </tr>
-        <tr>
-          <td>Uyang the great</td>
-          <td>Uyangs</td>
-          <td>69</td>
-          <td>Check</td>
-        </tr>
+        <thead>
+          <tr>
+            <th id="author">Author</th>
+            <th id="title">Title</th>
+            <th id="numOfPage">Number of Pages</th>
+            <th id="readOrNot">Read or Not</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td>Uyang the great</td>
+            <td>Uyangs</td>
+            <td>69</td>
+            <td>Check</td>
+          </tr> -->
+        </tbody>
       </table>
-      <button><img src="assets/icons/plus.svg" alt="plus icon" /></button>
+      <button id="addBtn"><img src="assets/icons/plus.svg" alt="plus icon" /></button>
     </main>
 
     <!-- modal -->
     <div class="modal">
-      <form action="">
+      <form class="book-form" action="">
+        <span class="close">&times;</span>
         <ul>
-          <label for="author"
-            >Author
-            <li><input type="text" id="author" name="title" /></li
-          ></label>
-          <label for="title"
-            >Title
-            <li><input type="text" id="title" name="title" /></li
-          ></label>
-          <label for="pages"
-            >Number of Pages
-            <li><input type="text" id="pages" name="pages" /></li
-          ></label>
+          <div>Author
+            <li><input type="text" id="authorInput" name="author" /></li></div>
+          <div>Title
+            <li><input type="text" id="titleInput" name="title" /></li></div>
+          <div>Number of Pages
+            <li><input type="number" id="pagesInput" name="pages" pattern="[0-9]" title="number only"/></li ></div>
+          <div>Read or not?
+            <li class="read-or-not">
+              <label><input type="radio" id="yes" value="yes" name="read" />Yes</label>
+              <label ><input type="radio" id="no" value="no" name="read" checked/>No</label>
+            </li></div>
         </ul>
+        <input type="submit" value="Add"></input>
       </form>
     </div>
   </body>
+  <script src="main.js"></script>
 </html>
