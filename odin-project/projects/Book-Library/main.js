@@ -10,12 +10,6 @@ const numberOfPage = document.querySelector("#numOfPage");
 const readOrNot = document.querySelector("#readOrNot");
 let tableRow = 0;
 
-const authorInput = document.querySelector("#authorInput");
-const titleInput = document.querySelector("#titleInput");
-const pagesInput = document.querySelector("#pagesInput");
-const readOrNotInput = document.querySelector('input[name="read"]');
-const bookForm = document.querySelector(".book-form");
-
 const myLibrary = [];
 
 addItemsBtn.addEventListener("click", () => {
@@ -32,8 +26,13 @@ function Book(author, title, numberOfPages, readOrNot) {
   this.numberOfPages = numberOfPages;
   this.readOrNot = readOrNot;
 }
+const authorInput = document.querySelector("#authorInput");
+const titleInput = document.querySelector("#titleInput");
+const pagesInput = document.querySelector("#pagesInput");
+const bookForm = document.querySelector(".book-form");
 
 function addToLibrary() {
+  const readOrNotInput = document.querySelector('input[name="read"]:checked');
   let newBook = new Book(
     authorInput.value,
     titleInput.value,
@@ -42,7 +41,7 @@ function addToLibrary() {
   );
 
   myLibrary.push(newBook);
-  displayDetails(newBook);
+  showBooks(newBook);
 
   bookForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -54,48 +53,16 @@ function addToLibrary() {
 
 addBook.addEventListener("click", addToLibrary);
 
-myLibrary.forEach((item) => {
-  var x = item;
-  console.log(x);
-});
-
 console.log(myLibrary);
 
-// function showBooks() {
-//   let template = `
-//     <tr>
-//       <td>${this.author}</td>
-//       <td>${this.title}</td>
-//       <td>${this.pagesInput}</td>
-//       <td>${this.readOrNotInput}</td>
-//   `;
-//   myLibrary.forEach((book) => {
-//     book.innerHTML += template;
-//   });
-// }
+function showBooks(newBook) {
+  let template = `
+    <tr>
+      <td>${newBook.author}</td>
+      <td>${newBook.title}</td>
+      <td>${newBook.numberOfPages}</td>
+      <td>${newBook.readOrNot}</td>
+  `;
 
-function displayDetails(newBook) {
-  // myLibrary.forEach(book1 => {
-  // })
-  let author = newBook.author;
-  let title = newBook.title;
-  let numberOfPage = newBook.numberOfPages;
-  let readOrNot = newBook.readOrNot;
-  let newRow = tbody.insertRow(tableRow);
-  let authorRow = newRow.insertCell(0);
-  let titleRow = newRow.insertCell(1);
-  let numberOfPageRow = newRow.insertCell(2);
-  let readOrNotRow = newRow.insertCell(3);
-  authorRow.textContent = author;
-  titleRow.textContent = title;
-  numberOfPageRow.textContent = numberOfPage;
-  readOrNotRow.textContent = readOrNot;
-  tableRow++;
+  tbody.innerHTML += template;
 }
-
-// addToLibrary(book1);
-// addToLibrary(book2);
-
-// for (let key in book1) {
-//   console.log(`${key}: ${book1[key]}`);
-// }
