@@ -145,10 +145,16 @@ input[type="submit"] {
   width: 100%;
 }
 
-.remove {
+.read-remove-btns {
   position: absolute;
   right: 10px;
   border-radius: 10px;
   border: none;
   padding: 0.35em;
+  bottom: 10px;
+}
+
+.read{
+  content: 'read';
+  background-color: red;
 }

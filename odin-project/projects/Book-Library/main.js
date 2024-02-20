@@ -32,16 +32,15 @@ function Book(author, title, numberOfPages, readOrNot, idNum) {
   this.idNum = idNum 
 }
 
-let idNum = 0
-
 function addToLibrary() {
   const readOrNotInput = document.querySelector('input[name="read"]:checked');
+  let id = myLibrary.length + 1
   let newBook = new Book(
-    idNum = idNum + 1,
     authorInput.value,
     titleInput.value,
     pagesInput.value,
-    readOrNotInput.value
+    readOrNotInput.value,
+    id,
   );
 
   myLibrary.push(newBook);
@@ -52,9 +51,10 @@ function addToLibrary() {
       clearForm()
     })
   modal.style.visibility = "hidden";
+  console.log(myLibrary);
+
 }
 addBook.addEventListener("click", addToLibrary);
-console.log(myLibrary);
 
 function clearForm(){
   authorInput.value = ""
@@ -64,16 +64,18 @@ function clearForm(){
 
 function showBooks() {
   tbody.innerHTML = ''; 
-  let sno = 0
   myLibrary.forEach(item => {
-   sno = item + 1
     let template = `
     <tr>
-      <td>${item.idNum}</td>
       <td>${item.author}</td>
       <td>${item.title}</td>
       <td>${item.numberOfPages}</td>
-      <td>${item.readOrNot}<button class="remove" onclick="removeItem(item.idNum)">remove</button></td>
+      <td>${item.readOrNot}
+        <div class="read-remove-btns">
+          <button class="reads" onclick="reads(this)">Read</button>
+          <button class="remove" onclick="removeItem(${item.idNum})">remove</button>
+        </div>
+      </td>
     </tr>
   `;
   tbody.innerHTML += template;
@@ -82,6 +84,32 @@ function showBooks() {
 
 function removeItem(item) {
   // let btn = document.querySelector(".remove");
+  let filteredBook = myLibrary.filter((a, i) => {
+    if (item == a.idNum){
+      myLibrary.splice(i, 1)
+      showBooks()
+    }
+  })
   console.log(item)
-  // item.closest("tr").remove();
+  console.log(myLibrary);
 }
+
+function reads(button){
+ myLibrary.filter(item => {
+     if(item.readOrNot == "Not Yet" ){
+       item.readOrNot = "Read"
+       console.log(item)
+      } else{
+        item.readOrNot = "Not Yet"
+      }
+    })
+    
+    if(button.textContent == "Read"){
+      button.innerHTML = "Not Yet"
+    } else {
+      button.innerHTML = "Read"
+    }
+    showBooks()
+    
+   console.log(myLibrary)
+ }
