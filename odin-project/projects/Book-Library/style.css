@@ -39,6 +39,7 @@ table,
 th,
 td {
   border: 1px solid;
+  position: relative;
 }
 
 th,
@@ -50,7 +51,7 @@ th {
   text-transform: uppercase;
 }
 
-button {
+.addBtn {
   width: 100%;
   background-color: transparent;
   border: none;
@@ -59,11 +60,11 @@ button {
   border-radius: 0 0 10px 10px;
 }
 
-button img {
+.addBtn img {
   height: 2em;
 }
 
-button:hover {
+.addBtn:hover {
   background-color: yellow;
 }
 
@@ -142,4 +143,12 @@ form div {
 
 input[type="submit"] {
   width: 100%;
+}
+
+.remove {
+  position: absolute;
+  right: 10px;
+  border-radius: 10px;
+  border: none;
+  padding: 0.35em;
 }

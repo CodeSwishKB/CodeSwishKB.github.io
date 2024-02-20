@@ -10,7 +10,8 @@
     <main>
       <table>
         <thead>
-          <tr>
+          <tr>  
+            <th id="id">id</th>
             <th id="author">Author</th>
             <th id="title">Title</th>
             <th id="numOfPage">Number of Pages</th>
@@ -26,7 +27,7 @@
           </tr> -->
         </tbody>
       </table>
-      <button id="addBtn"><img src="assets/icons/plus.svg" alt="plus icon" /></button>
+      <button class="addBtn" id="addBtn"><img src="assets/icons/plus.svg" alt="plus icon" /></button>
     </main>
 
     <!-- modal -->
@@ -35,18 +36,18 @@
         <span class="close">&times;</span>
         <ul>
           <div>Author
-            <li><input type="text" id="authorInput" name="author" /></li></div>
+            <li><input type="text" id="authorInput" name="author"  required/></li></div>
           <div>Title
-            <li><input type="text" id="titleInput" name="title" /></li></div>
+            <li><input type="text" id="titleInput" name="title"  required/></li></div>
           <div>Number of Pages
-            <li><input type="number" id="pagesInput" name="pages" pattern="[0-9]" title="number only"/></li ></div>
+            <li><input type="number" id="pagesInput" name="pages" pattern="[0-9]" title="number only" required/></li ></div>
           <div>Read or not?
             <li class="read-or-not">
-              <label><input type="radio" id="yes" value="yes" name="read" />Yes</label>
-              <label ><input type="radio" id="no" value="no" name="read"/>No</label>
+              <label><input type="radio" id="yes" value="yes" name="read"  required/>Yes</label>
+              <label ><input type="radio" id="no" value="no" name="read" checked required/>No</label>
             </li></div>
         </ul>
-        <input type="submit" value="Add"></input>
+        <input type="submit" value="Add">
       </form>
     </div>
   </body>
