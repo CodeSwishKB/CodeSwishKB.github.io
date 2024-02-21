@@ -9,9 +9,7 @@ const title = document.querySelector("#title");
 const numberOfPage = document.querySelector("#numOfPage");
 const readOrNot = document.querySelector("#readOrNot");
 
-const authorInput = document.querySelector("#authorInput");
-const titleInput = document.querySelector("#titleInput");
-const pagesInput = document.querySelector("#pagesInput");
+
 const bookForm = document.querySelector(".book-form");
 
 const myLibrary = [];
@@ -24,24 +22,28 @@ closeBtn.addEventListener("click", () => {
   modal.style.visibility = "hidden";
 });
 
-function Book(author, title, numberOfPages, readOrNot, idNum) {
+function Book(author, title, numberOfPages, readOrNot) {
   this.author = author;
   this.title = title;
   this.numberOfPages = numberOfPages;
   this.readOrNot = readOrNot;
-  this.idNum = idNum 
+}
+
+Book.prototype.toggleRead = function() {
+  this.readOrNot = !this.readOrNot
+}
+
+function toggleRead(item){
+  myLibrary[item].toggleRead()
+  showBooks()
 }
 
 function addToLibrary() {
-  const readOrNotInput = document.querySelector('input[name="read"]:checked');
-  let id = myLibrary.length + 1
-  let newBook = new Book(
-    authorInput.value,
-    titleInput.value,
-    pagesInput.value,
-    readOrNotInput.value,
-    id,
-  );
+  const authorInput = document.querySelector("#authorInput").value;
+  const titleInput = document.querySelector("#titleInput").value;
+  const pagesInput = document.querySelector("#pagesInput").value;
+  const readOrNotInput = document.querySelector('input[name="read"]').checked;
+  let newBook = new Book(authorInput, titleInput, pagesInput, readOrNotInput);
 
   myLibrary.push(newBook);
   showBooks();
@@ -51,7 +53,7 @@ function addToLibrary() {
       clearForm()
     })
   modal.style.visibility = "hidden";
-  console.log(myLibrary);
+  // console.log(myLibrary);
 
 }
 addBook.addEventListener("click", addToLibrary);
@@ -70,10 +72,11 @@ function showBooks() {
       <td>${item.author}</td>
       <td>${item.title}</td>
       <td>${item.numberOfPages}</td>
-      <td>${item.readOrNot}
+      <td class="read-or-not-flex">${item.readOrNot}
         <div class="read-remove-btns">
-          <button class="reads" onclick="reads(this)">Read</button>
-          <button class="remove" onclick="removeItem(${item.idNum})">remove</button>
+          <p class="read-status">${item.readOrNot ? "Read" : "Not Yet"}</p>
+          <button class="reads" onclick="toggleRead()">Read</button>
+          <button class="remove" onclick="removeBook()">remove</button>
         </div>
       </td>
     </tr>
@@ -82,34 +85,34 @@ function showBooks() {
   })
 }
 
-function removeItem(item) {
+function removeBook(index) {
   // let btn = document.querySelector(".remove");
-  let filteredBook = myLibrary.filter((a, i) => {
-    if (item == a.idNum){
-      myLibrary.splice(i, 1)
-      showBooks()
-    }
-  })
-  console.log(item)
-  console.log(myLibrary);
+  // let filteredBook = myLibrary.filter((book, index) => {
+  //   if (item == book.idNum){
+  //     myLibrary.splice(index, 1)
+  //     showBooks()
+  //   }
+  // })
+  myLibrary.splice(index, 1)
+  showBooks()
+ 
 }
 
-function reads(button){
- myLibrary.filter(item => {
-     if(item.readOrNot == "Not Yet" ){
-       item.readOrNot = "Read"
-       console.log(item)
-      } else{
-        item.readOrNot = "Not Yet"
-      }
-    })
-    
-    if(button.textContent == "Read"){
-      button.innerHTML = "Not Yet"
-    } else {
-      button.innerHTML = "Read"
-    }
-    showBooks()
-    
-   console.log(myLibrary)
- }
+// function reads(){
+//   let readBtn = document.querySelector('.reads')
+//   myLibrary.filter(item => {
+//      if(item.readOrNot == "Not Yet" ){
+//        item.readOrNot = "Read"
+//        showBooks()
+//       } else{
+//         item.readOrNot = "Not Yet"
+//         showBooks()
+//       }
+//     })
+//     if(readBtn.textContent === "Read"){
+//       readBtn.textContent = "Not Yet"
+//     } else {
+//       readBtn.textContent = "Read"
+//     }
+//    console.log(readBtn)
+//  }

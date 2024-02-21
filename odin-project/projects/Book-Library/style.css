@@ -64,6 +64,13 @@ th {
   height: 2em;
 }
 
+.addBtn div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5em
+}
+
 .addBtn:hover {
   background-color: yellow;
 }
@@ -146,15 +153,14 @@ input[type="submit"] {
 }
 
 .read-remove-btns {
-  position: absolute;
-  right: 10px;
-  border-radius: 10px;
-  border: none;
-  padding: 0.35em;
-  bottom: 10px;
+display: flex;
+gap: .25em;
+flex-wrap: wrap;
 }
 
-.read{
-  content: 'read';
-  background-color: red;
+.read-or-not-flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
 }
