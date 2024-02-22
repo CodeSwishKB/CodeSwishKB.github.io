@@ -11,16 +11,14 @@ const titleInput = document.querySelector("#title");
 const pagesInput = document.querySelector("#pages");
 const read = document.querySelector('input[name="read"]');
 
-const inputs = [authorInput, titleInput, pagesInput]
-
 const myLibrary = [];
 
 addItemsBtn.addEventListener("click", () => {
-	modal.style.visibility = "visible";
+	modal.style.display = "block";
 });
 
 closeBtn.addEventListener("click", () => {
-	modal.style.visibility = "hidden";
+	modal.style.display = "none";
 });
 
 function Book(author, title, numberOfPages, read) {
@@ -41,19 +39,27 @@ function toggleRead(item) {
 
 function addToLibrary() {
 	let newBook = new Book(authorInput.value, titleInput.value, pagesInput.value, read.checked);
-	myLibrary.push(newBook);
-	showBooks();
 
-	bookForm.addEventListener("submit", validate)
-	modal.style.visibility = "hidden";
+	if (authorInput.value.trim() === "" || authorInput.value === null) {
+		showError(authorInput, `${getFieldName(authorInput)} must put `);
+	} else if (titleInput.value.trim() === "" || titleInput.value === null) {
+		showError(titleInput, `${getFieldName(titleInput)} must put `);
+	} else if (pagesInput.value.trim() === "" || pagesInput.value === null) {
+		showError(pagesInput, `${getFieldName(pagesInput)} must put `);
+	} else {
+		showSuccess(authorInput);
+		showSuccess(titleInput);
+		showSuccess(pagesInput);
+		myLibrary.push(newBook);
+		showBooks();
+		modal.style.display = "none";
+		clearForm()
+	}
+	bookForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+	})
 }
 addBook.addEventListener("click", addToLibrary);
-
-function validate(e) {
-	e.preventDefault();
-	checkFields(inputs)
-	clearForm()
-}
 
 function clearForm() {
 	authorInput.value = ""
@@ -73,13 +79,13 @@ function showBooks() {
       <div class="read-or-not-flex">
         <p class="read-status">${myLibrary[i].read ? "Read" : "Not Yet"}</p>
           <div class="read-remove-btns">
-            <button class="reads" onclick="toggleRead(${i})"><img style="width: 23px" src="assets/icons/book-check-outline.svg"></button>
-            <button class="remove" onclick="removeBook(${i})"><img style="width: 23px" src="assets/icons/delete-outline.svg"></button>
+            <button class="read-not-btn reads" onclick="toggleRead(${i})"><img style="width: 23px" src="assets/icons/book-check-outline.svg"></button>
+            <button class="read-not-btn remove" onclick="removeBook(${i})"><img style="width: 23px" src="assets/icons/delete-outline.svg"></button>
           </div>
       </div>
       </td>
     </tr>
-  `;
+	`;
 		tbody.innerHTML += template;
 	}
 }
@@ -102,15 +108,5 @@ function showSuccess(input) {
 }
 
 function getFieldName(input) {
-  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
-function checkFields(inputArr) {
-	inputArr.forEach((input) => {
-		if (input.value.trim() === "") {
-			showError(input, `${getFieldName(input)} must put text`);
-		} else {
-			showSuccess(input);
-		}
-	});
+	return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
