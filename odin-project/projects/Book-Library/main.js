@@ -4,115 +4,113 @@ const closeBtn = document.querySelector(".close");
 const addBook = document.querySelector('input[type="submit"]');
 
 const tbody = document.querySelector("tbody");
-const author = document.querySelector("#author");
-const title = document.querySelector("#title");
-const numberOfPage = document.querySelector("#numOfPage");
-const readOrNot = document.querySelector("#readOrNot");
-
-
 const bookForm = document.querySelector(".book-form");
+
+const authorInput = document.querySelector("#author");
+const titleInput = document.querySelector("#title");
+const pagesInput = document.querySelector("#pages");
+const read = document.querySelector('input[name="read"]');
+
+const inputs = [authorInput, titleInput, pagesInput]
 
 const myLibrary = [];
 
 addItemsBtn.addEventListener("click", () => {
-  modal.style.visibility = "visible";
+	modal.style.visibility = "visible";
 });
 
 closeBtn.addEventListener("click", () => {
-  modal.style.visibility = "hidden";
+	modal.style.visibility = "hidden";
 });
 
-function Book(author, title, numberOfPages, readOrNot) {
-  this.author = author;
-  this.title = title;
-  this.numberOfPages = numberOfPages;
-  this.readOrNot = readOrNot;
+function Book(author, title, numberOfPages, read) {
+	this.author = author;
+	this.title = title;
+	this.numberOfPages = numberOfPages;
+	this.read = read;
 }
 
 Book.prototype.toggleRead = function() {
-  this.readOrNot = !this.readOrNot
+	this.read = !this.read
 }
 
-function toggleRead(item){
-  myLibrary[item].toggleRead()
-  showBooks()
+function toggleRead(item) {
+	myLibrary[item].toggleRead()
+	showBooks()
 }
 
 function addToLibrary() {
-  const authorInput = document.querySelector("#authorInput").value;
-  const titleInput = document.querySelector("#titleInput").value;
-  const pagesInput = document.querySelector("#pagesInput").value;
-  const readOrNotInput = document.querySelector('input[name="read"]').checked;
-  let newBook = new Book(authorInput, titleInput, pagesInput, readOrNotInput);
+	let newBook = new Book(authorInput.value, titleInput.value, pagesInput.value, read.checked);
+	myLibrary.push(newBook);
+	showBooks();
 
-  myLibrary.push(newBook);
-  showBooks();
-
-    bookForm.addEventListener("submit", e => {
-      e.preventDefault();
-      clearForm()
-    })
-  modal.style.visibility = "hidden";
-  // console.log(myLibrary);
-
+	bookForm.addEventListener("submit", validate)
+	modal.style.visibility = "hidden";
 }
 addBook.addEventListener("click", addToLibrary);
 
-function clearForm(){
-  authorInput.value = ""
-  titleInput.value = "" 
-  pagesInput.value = "" 
+function validate(e) {
+	e.preventDefault();
+	checkFields(inputs)
+	clearForm()
+}
+
+function clearForm() {
+	authorInput.value = ""
+	titleInput.value = ""
+	pagesInput.value = ""
 }
 
 function showBooks() {
-  tbody.innerHTML = ''; 
-  myLibrary.forEach(item => {
-    let template = `
+	tbody.innerHTML = '';
+	for (let i = 0; i < myLibrary.length; i++) {
+		let template = `
     <tr>
-      <td>${item.author}</td>
-      <td>${item.title}</td>
-      <td>${item.numberOfPages}</td>
-      <td class="read-or-not-flex">${item.readOrNot}
-        <div class="read-remove-btns">
-          <p class="read-status">${item.readOrNot ? "Read" : "Not Yet"}</p>
-          <button class="reads" onclick="toggleRead()">Read</button>
-          <button class="remove" onclick="removeBook()">remove</button>
-        </div>
+      <td>${myLibrary[i].author}</td>
+      <td>${myLibrary[i].title}</td>
+      <td>${myLibrary[i].numberOfPages}</td>
+      <td>
+      <div class="read-or-not-flex">
+        <p class="read-status">${myLibrary[i].read ? "Read" : "Not Yet"}</p>
+          <div class="read-remove-btns">
+            <button class="reads" onclick="toggleRead(${i})"><img style="width: 23px" src="assets/icons/book-check-outline.svg"></button>
+            <button class="remove" onclick="removeBook(${i})"><img style="width: 23px" src="assets/icons/delete-outline.svg"></button>
+          </div>
+      </div>
       </td>
     </tr>
   `;
-  tbody.innerHTML += template;
-  })
+		tbody.innerHTML += template;
+	}
 }
 
 function removeBook(index) {
-  // let btn = document.querySelector(".remove");
-  // let filteredBook = myLibrary.filter((book, index) => {
-  //   if (item == book.idNum){
-  //     myLibrary.splice(index, 1)
-  //     showBooks()
-  //   }
-  // })
-  myLibrary.splice(index, 1)
-  showBooks()
- 
+	myLibrary.splice(index, 1)
+	showBooks()
 }
 
-// function reads(){
-//   let readBtn = document.querySelector('.reads')
-//   myLibrary.filter(item => {
-//      if(item.readOrNot == "Not Yet" ){
-//        item.readOrNot = "Read"
-//        showBooks()
-//       } else{
-//         item.readOrNot = "Not Yet"
-//         showBooks()
-//       }
-//     })
-//     if(readBtn.textContent === "Read"){
-//       readBtn.textContent = "Not Yet"
-//     } else {
-//       readBtn.textContent = "Read"
-//     }
-//    console.log(readBtn)
-//  }
+function showError(input, msg) {
+	const formControl = input.parentElement;
+	formControl.className = "form-info error";
+	const small = formControl.querySelector("small");
+	small.textContent = msg;
+}
+
+function showSuccess(input) {
+	const formControl = input.parentElement;
+	formControl.className = "form-info success";
+}
+
+function getFieldName(input) {
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
+function checkFields(inputArr) {
+	inputArr.forEach((input) => {
+		if (input.value.trim() === "") {
+			showError(input, `${getFieldName(input)} must put text`);
+		} else {
+			showSuccess(input);
+		}
+	});
+}

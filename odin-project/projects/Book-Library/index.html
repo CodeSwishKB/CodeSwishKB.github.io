@@ -10,43 +10,59 @@
     <main>
       <table>
         <thead>
-          <tr>  
+          <tr>
             <th id="author">Author</th>
             <th id="title">Title</th>
             <th id="numOfPage">Number of Pages</th>
             <th id="readOrNot">Status</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- <tr>
-            <td>Uyang the great</td>
-            <td>Uyangs</td>
-            <td>69</td>
-            <td>Check</td>
-          </tr> -->
-        </tbody>
+        <tbody></tbody>
       </table>
       <button class="addBtn" id="addBtn">
-        <div>NEW BOOK<img src="assets/icons/plus.svg" alt="plus icon" /></div>
+        <div>NEW BOOK <img src="assets/icons/plus.svg" alt="plus icon" />
+        </div>
       </button>
     </main>
-
     <!-- modal -->
     <div class="modal">
       <form class="book-form" action="">
         <span class="close">&times;</span>
         <ul>
-          <div>Author
-            <li><input type="text" id="authorInput" name="author"  required/></li></div>
-          <div>Title
-            <li><input type="text" id="titleInput" name="title"  required/></li></div>
-          <div>Number of Pages
-            <li><input type="number" id="pagesInput" name="pages" pattern="[0-9]" title="number only" required/></li ></div>
-          <div>Read or not?
-            <li class="read-or-not">
-              <label><input type="radio" id="yes" value="Read" name="read"  required/>Yes</label>
-              <label ><input type="radio" id="no" value="Not Yet" name="read" checked required/>No</label>
-            </li></div>
+          <div>
+            <li>
+              <div class="form-info">
+                <label for="">Author</label>
+                <input type="text" id="author" name="author" pattern="[a-zA-Z0-9]+" />
+                <small>Error message</small>
+              </div>
+            </li>
+          </div>
+          <div for="title">
+            <li>
+              <div class="form-info">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" pattern="[a-zA-Z0-9]+" />
+                <small>Error message</small>
+              </div>
+            </li>
+          </div>
+          <div for="pages">
+            <li>
+              <div class="form-info">
+                <label for="pages">Number of Pages</label>
+                <input type="number" id="pages" name="pages" pattern="[0-9]+" title="number only" />
+                <small>Error message</small>
+              </div>
+            </li>
+          </div>
+          <div for="read">Read or not? <li class="read-or-not">
+              <label>
+                <input type="radio" id="yes" value="Read" name="read" checked/>Yes </label>
+              <label>
+                <input type="radio" id="no" value="Not Yet" name="read" />Not Yet </label>
+            </li>
+          </div>
         </ul>
         <input type="submit" value="Add">
       </form>
