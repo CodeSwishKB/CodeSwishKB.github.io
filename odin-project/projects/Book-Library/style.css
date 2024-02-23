@@ -6,7 +6,7 @@
   --body-bg-clr: #2b3035;
   --td-bg-clr: #343a40;
   --form-bg-clr: #1f1e1c; 
-
+  --add-btn-bg-clr: #788a36;
   --error-clr: #e74c3c;
   --success-clr: #2ecc71;
 
@@ -57,7 +57,7 @@ table {
 table,
 th,
 td {
-  text-wrap: wrap;
+
   position: relative;
 }
 
@@ -67,6 +67,12 @@ td {
   background-color: var(--td-bg-clr);
   border-bottom: 5px solid var(--body-bg-clr);
   border-radius: 5px;
+  word-wrap: break-word;         /* All browsers since IE 5.5+ */
+  overflow-wrap: break-word;
+}
+th p, td p {
+  word-wrap: break-word;         /* All browsers since IE 5.5+ */
+  overflow-wrap: break-word;
 }
 
 
@@ -84,7 +90,7 @@ th {
   color: white;
 }
 
-.addBtn img {
+.addBtn img{
   filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(306deg) brightness(103%) contrast(101%);
   height: 2em;
 }
@@ -171,7 +177,7 @@ input[type="text"], input[type="number"] {
   border: none;
   appearance: none;
   height: 1.75em;
-  padding: 1em;
+  padding: 1em 1em 1em 1.5em;
 }
 
 .form-info {
@@ -192,11 +198,9 @@ input[type="text"], input[type="number"] {
 }
 
 .icon {
-  padding-left: 2em;
-  margin-right: 2em;
+  padding-left: 20px;
   background: no-repeat left;
   background-size: 20px;
-  filter: invert(61%) sepia(1%) saturate(82%) hue-rotate(314deg) brightness(94%) contrast(92%);;
 }
 
 .icon__author{
@@ -211,14 +215,13 @@ input[type="text"], input[type="number"] {
   background-image: url('assets/icons/numeric.svg');
 }
 
-
-
 .form-info small {
   color: var(--error-clr);
   position: absolute;
-  bottom: -20px;
+  bottom: -19px;
   left: 5px;
   visibility: hidden;
+  font-size: .65rem;
 }
 
 .form-info.error small {
@@ -234,8 +237,9 @@ input[type="text"], input[type="number"] {
 }
 
 form div {
-  margin-bottom: .35em;
+  margin-bottom: .5em;
 }
+
 
 .read{
   margin-bottom: 1em;
@@ -245,10 +249,6 @@ form div {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-}
-
-input[type="submit"] {
-  width: 100%;
 }
 
 input[type="radio"]{
@@ -281,8 +281,6 @@ input[type="radio"]:checked::before {
 
 .read-remove-btns {
   display: flex;
-  gap: 0.75em;
-  flex-wrap: wrap;
 }
 
 .read-remove-btns button{
@@ -290,6 +288,8 @@ input[type="radio"]:checked::before {
   background-color: transparent;
   filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(306deg) brightness(103%) contrast(101%);
   cursor: pointer;
+  width: 2em;
+  height: 2em;
 }
 
 .read-not-btn{
@@ -312,21 +312,74 @@ input[type="radio"]:checked::before {
 .read-or-not-flex {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
   border-bottom: transparent;
+  gap: .5em
 }
 
 .read{
   margin-bottom: 1em;
 }
 
-@media screen and (min-width: 320px) {
+.addBookBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 100px;
+  padding: .125em .75em;
+  background-color: var(--add-btn-bg-clr);
+  color: white;
+}
+
+.addBookBtn img{
+  height: 1.25em;
+  font-size: 900;
+}
+
+@media (min-width: 320px ) {
   html,
   * {
     font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
+  
+
 }
+
+@media (max-width: 750px){
+
+  .modal form {
+    width: 90%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em;
+    background-color: var(--form-bg-clr);
+    border-radius: 10px;
+    color: white;
+  }
+
+  .read-status{
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .read-or-not-flex{
+
+    gap: .125em
+  }
+
+  .read-or-not-flex, .read-remove-btns{
+    justify-content: space-evenly;
+  }
+
+}
+
 @media screen and (min-width: 1000px) {
   html,
   * {

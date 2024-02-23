@@ -1,7 +1,7 @@
 const addItemsBtn = document.querySelector("#addBtn");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".close");
-const addBook = document.querySelector('input[type="submit"]');
+const addBook = document.querySelector('.addBookBtn');
 
 const tbody = document.querySelector("tbody");
 const bookForm = document.querySelector(".book-form");
@@ -40,21 +40,32 @@ function toggleRead(item) {
 function addToLibrary() {
 	let newBook = new Book(authorInput.value, titleInput.value, pagesInput.value, read.checked);
 
-	if (authorInput.value.trim() === "" || authorInput.value === null) {
-		showError(authorInput, `${getFieldName(authorInput)} must put `);
-	} else if (titleInput.value.trim() === "" || titleInput.value === null) {
-		showError(titleInput, `${getFieldName(titleInput)} must put `);
-	} else if (pagesInput.value.trim() === "" || pagesInput.value === null) {
-		showError(pagesInput, `${getFieldName(pagesInput)} must put `);
+	if((authorInput.value.trim() === "" || authorInput.value === null || authorInput.value === "") || (titleInput.value.trim() === "" || titleInput.value === null || titleInput.value === "") || (pagesInput.value.trim() === "" || pagesInput.value === null || pagesInput.value === "")){
+
+		if (authorInput.value.trim() === "" || authorInput.value === null) {
+			showError(authorInput, `**${getFieldName(authorInput)} must put `);
+		} else {
+			showSuccess(authorInput);
+		}
+	
+		if (titleInput.value.trim() === "" || titleInput.value === null) {
+			showError(titleInput, `**${getFieldName(titleInput)} must put `);
+		}else {
+			showSuccess(titleInput);
+		}
+
+		 if (pagesInput.value.trim() === "" || pagesInput.value === null) {
+			showError(pagesInput, `**${getFieldName(pagesInput)} must put `);
+		} else {
+			showSuccess(pagesInput);
+		}
+
 	} else {
-		showSuccess(authorInput);
-		showSuccess(titleInput);
-		showSuccess(pagesInput);
 		myLibrary.push(newBook);
-		showBooks();
-		modal.style.display = "none";
-		clearForm()
-	}
+			showBooks();
+			modal.style.display = "none";
+			clearForm()
+	}	
 	bookForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 	})
@@ -72,8 +83,8 @@ function showBooks() {
 	for (let i = 0; i < myLibrary.length; i++) {
 		let template = `
     <tr>
-      <td>${myLibrary[i].author}</td>
-      <td>${myLibrary[i].title}</td>
+      <td><p>${myLibrary[i].author}</p></td>
+      <td><p>${myLibrary[i].title}</p></td>
       <td>${myLibrary[i].numberOfPages}</td>
       <td>
       <div class="read-or-not-flex">
@@ -99,6 +110,7 @@ function showError(input, msg) {
 	const formControl = input.parentElement;
 	formControl.className = "form-info error";
 	const small = formControl.querySelector("small");
+	small.textContent = ""
 	small.textContent = msg;
 }
 
