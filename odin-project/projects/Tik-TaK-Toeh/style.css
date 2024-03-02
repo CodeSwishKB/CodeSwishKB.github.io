@@ -2,10 +2,12 @@
     display: grid;
     grid-template-columns: repeat(3, 100px);
     place-content: center;
+    margin-bottom: 1em;
 }
 
 .squares{
     border: 1px solid black;
     width: 100px;
     height: 100px;
+    cursor: pointer;
 }
