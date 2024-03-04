@@ -155,7 +155,5 @@ function checkWin(board) {
 // animation
 startBtn.addEventListener("click", () => {
 	let gameboard = document.querySelector('.gameboard')
-	// let container = document.querySelector('.container')
 	gameboard.classList.add('gameboard-animate')
-	// container.classList.add('container-animate')
 })
