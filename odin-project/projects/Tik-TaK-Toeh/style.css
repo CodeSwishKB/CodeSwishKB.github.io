@@ -1,13 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --bg-clr: #22242a;
+    --accent-clr: #3e7dd6;
+    --border-bg: #1b1e22;
+
+    --ff-primary: "Poppins", sans-serif;
+}
+
+*{
+    font-family: var(--ff-primary);
+}
+
+body{
+    background-color: var(--accent-clr);
+    min-height: 100vh;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    padding:  0 .5em;
+    margin: 0 ;
+}
+
+.container {
+    width: 85%;
+    background-color: var(--bg-clr);
+    color: white;
+    display: grid;
+    place-content: center;
+    padding: 4em;
+    border-radius: 15px;
+    margin: 1.5em auto;
+}
+
+.content {
+    display: flex;
+    gap: 2em;
+    
+}
+
 .gameboard{
     display: grid;
     grid-template-columns: repeat(3, 100px);
-    place-content: center;
+    place-content: start;
     margin-bottom: 1em;
+    padding: 1.5em;
+    gap: 1.5em;
+    border-radius: 10px;
+}
+
+.gameboard-bg{
+    background-color: var(--border-bg);
 }
 
 .squares{
-    border: 1px solid black;
+    background-color: var(--bg-clr);
     width: 100px;
     height: 100px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.symbol img{
+    max-width: 100%;
+    width: 4em;
+}
+
+.x-symbol{
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+    
+}
+.o-symbol{
+    filter: invert(100%) sepia(100%) saturate(21%) hue-rotate(209deg) brightness(105%) contrast(100%);
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1em
+}
+
+input[type="text"]{
+    appearance: none;
+    border: none;
+    outline: none;
+    height: 2.5em;
+    background-color: var(--border-bg);
+    color: white;
+    border-radius: 5px;
+}
+
+button{
+    border: none;
+    background-color: var(--accent-clr);
+    color: white;
+    padding: .5em;
+    font-weight: 700;
+    letter-spacing: 3px;
+    border-radius: 3px;     
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: .5;
+} 
+
+h1{
+    margin-top: 0;
+    font-size: 2.5rem;
+}
+
+.displayMsg{
+    margin-top: 1.75em;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* animation */
+
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes slide-down-bounce {
+    0% {
+      transform: translateY(-100%);
+    }
+    40% {
+      transform: translateY(0%);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes bounce-in {
+      0% {
+      opacity: 0;
+      transform: scale(.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% { transform: scale(.9); }
+    100% { transform: scale(1); }
+}
+
+.bounce-in {
+  animation: bounce-in 500ms ease-in-out;
+}
+
+.gameboard-animate {
+    animation: slide-down-bounce 1000ms forwards, fade-in 500ms forwards;
+}
+
+.container{
+    animation: slide-down 1000ms forwards, fade-in 500ms forwards
 }

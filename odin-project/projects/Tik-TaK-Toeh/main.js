@@ -3,7 +3,7 @@ let restartBtn = document.querySelector('[data-restart-btn]')
 
 const GameBoard = (() => {
 	const gameBoard = ["", "", "", "", "", "", "", "", ""]
-
+	
 	const render = () => {
 		let template = "";
 		let gameboard = document.querySelector('.gameboard')
@@ -22,7 +22,7 @@ const GameBoard = (() => {
 	const update = (idx, val) => {
 		gameBoard[idx] = val
 	}
-
+	
 	return {
 		render,
 		getGameBoard,
@@ -48,13 +48,12 @@ const GameControl = (() => {
 			currentPlayer = 0
 		}
 	}
-
+	
 	const start = () => {
 		players = [
-			createPlayer(document.querySelector('[data-enter-name1]').value, "X"),
-			createPlayer(document.querySelector('[data-enter-name2]').value, "0")
+			createPlayer(document.querySelector('[data-enter-name1]').value, `<div class="x-symbol symbol"><img src="assets/icons/x-mark.svg" alt=""></div>`),
+			createPlayer(document.querySelector('[data-enter-name2]').value, `<div class="o-symbol symbol"><img src="assets/icons/o.svg" alt=""></div>`)
 		]
-
 		currentPlayer = 0;
 		gameOver = false
 		GameBoard.render()
@@ -62,75 +61,70 @@ const GameControl = (() => {
 		squares.forEach(square => {
 			square.addEventListener("click", GameControl.handleClick)
 		})
-
+		
 	}
 
+	const handleClick = (e) => {
+		let index = parseInt(e.target.id)
 
+		if (GameBoard.getGameBoard()[index] !== "") return
+		
+		if(gameOver) {
+			return
+		}
+		
+		GameBoard.getGameBoard();
+		GameBoard.update(index, players[currentPlayer].marker)
+		GameBoard.render()
+		
+		if (checkWin(GameBoard.getGameBoard(), players[currentPlayer].marker)) {
+			gameOver = true
+			displayController.displayMessage(`${players[currentPlayer].name} won!`)
+			
+		} else if (checkTie(GameBoard.getGameBoard(), players[currentPlayer].marker)) {
+			gameOver = true
+			displayController.displayMessage(`It's a tie!`)
+			
+		}
+		switchTurns()
+		
+	}
+	
 	const restart = () => {
 		for (let i = 0; i < 9; i++) {
 			GameBoard.update(i, "")
 		}
 		GameBoard.getGameBoard()
 		GameBoard.render()
+		gameOver = false
 	}
-
-	const handleClick = (e) => {
-		let index = parseInt(e.target.id)
-		if (GameBoard.getGameBoard()[index] !== "") return
-
-		GameBoard.getGameBoard();
-		GameBoard.update(index, players[currentPlayer].marker)
-		GameBoard.render()
-
-		if (checkWin(GameBoard.getGameBoard(), players[currentPlayer].marker)) {
-			gameOver = true
-			console.log(`${players[currentPlayer].name} won!`)
-
-		} else if (checkTie(GameBoard.getGameBoard(), players[currentPlayer].marker)) {
-			gameOver = true
-			console.log(`It's a tie!`)
-
-		}
-
-		switchTurns()
-
-	}
-
-	// for not 2d array
-	const dropValue = (idx) => {
-		if (GameBoard.getGameBoard()[idx] !== "") return
-
-		getActivePlayerName()
-		GameBoard.update(idx, getActivePlayer().marker)
-		GameBoard.getGameBoard();
-		GameBoard.consoleGameBoard();
-
-		if (checkWin(GameBoard.getGameBoard(), getActivePlayer().marker)) {
-			gameOver = true
-			console.log(`${getActivePlayer().name} won!`)
-
-		} else if (checkTie(GameBoard.getGameBoard(), getActivePlayer().marker)) {
-			gameOver = true
-			console.log(`It's a tie!`)
-
-		}
-		switchTurns()
-	}
-
+	
 	return {
-		dropValue,
 		restart,
 		start,
 		handleClick
 	}
 })()
 
+const displayController = (() => {
+	const displayMessage = (msg) => {
+		document.querySelector('.displayMsg').innerHTML = msg 
+	}
+
+	return {
+		displayMessage
+	}
+})()
+
+
 startBtn.addEventListener("click", () => {
 	GameControl.start()
+	document.querySelector('.gameboard').classList.add('gameboard-bg')
 })
 
 restartBtn.addEventListener("click", () => {
 	GameControl.restart()
+	displayController.displayMessage('')
 })
 
 function checkTie(board) {
@@ -157,3 +151,11 @@ function checkWin(board) {
 	}
 	return false
 }
+
+// animation
+startBtn.addEventListener("click", () => {
+	let gameboard = document.querySelector('.gameboard')
+	// let container = document.querySelector('.container')
+	gameboard.classList.add('gameboard-animate')
+	// container.classList.add('container-animate')
+})
