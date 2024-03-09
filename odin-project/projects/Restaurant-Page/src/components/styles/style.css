@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dynalight&display=swap');
+
+
+img{
+    max-width: 100%;
+}
+
+:root{
+    --ff-header: "Open Sans", sans-serif;
+    --ff-content: "Dynalight", cursive;
+}
+
+
+body{
+    min-height: 100vh;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fffff5;
+    position: fixed;
+    top: 0;
+    font-family: var(--ff-header);
+
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
+
+button{
+    font-size: 1.125rem;
+    font-family: inherit;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+button:hover{
+    color: #dad603;
+}
+
+.imgLogo{
+    width: 9%;
+    order: -1;
+}
+
+#content{   
+    max-width: 800px;
+    padding: 0 1em;
+    margin: 7em auto;
+}
+
+.title {
+    font-family: var(--ff-content);
+
+}
+
+/* Home module */
+.homeElH1 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 0;
+}
+
+.homeElP{
+    line-height: 1.6;
+    font-size: .95rem;
+    font-family: var(--ff-header);
+}
+
+/* menu module */
+/* .menuCard {
+    display: flex;
+} */
+
+.menuElTitle{
+    font-size: 1.75rem;
+}
+
+.menuDivImg {   
+    width: 50%;
+    height: 40%;
+}
