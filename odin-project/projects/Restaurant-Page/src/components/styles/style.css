@@ -14,6 +14,7 @@ img{
 
 body{
     min-height: 100vh;
+    font-family: var(--ff-header);
 }
 
 
@@ -80,15 +81,40 @@ button:hover{
 }
 
 /* menu module */
-/* .menuCard {
+.menuCard {
     display: flex;
-} */
+    flex-direction: column;
+    align-items: center;
+    flex: 0
+}
+
+.cardContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+}
+
 
 .menuElTitle{
-    font-size: 1.75rem;
+    font-size: 2rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.menuDesc{
+    font-size: .95rem;
+    text-align: center;
 }
 
 .menuDivImg {   
-    width: 50%;
-    height: 40%;
+    width: 70%;
+    height: 50%;
+}
+
+.menuDivImg img{
+    aspect-ratio: 1;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    border-radius: 5px;
 }

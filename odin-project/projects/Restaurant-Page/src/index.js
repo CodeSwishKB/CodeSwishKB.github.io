@@ -24,4 +24,4 @@ return {logo}
 
 resto.logo()
 // homePage()
-menu()
+// menu()

@@ -32,9 +32,11 @@ export function menu(){
             desc: 'Masterpiece!'
         },
     ]
+    const divContent = document.querySelector('#content')
+    const cardContainer = document.createElement('div')
+    cardContainer.className = "cardContainer"
 
     gulayMenu.forEach(item => {
-        const divContent = document.querySelector('#content')
         const card = document.createElement('div')
         const elTitle = document.createElement('h3')
         const elDesc = document.createElement('p')
@@ -44,17 +46,18 @@ export function menu(){
         elTitle.innerHTML = item.name
         elDesc.innerHTML = item.desc
         elImg.src = item.imgSrc
-        
 
         card.className = 'menuCard'
         elTitle.className = `menuElTitle title`
         divImg.className = 'menuDivImg'
+        elDesc.className = 'menuDesc'
         
-        divContent.appendChild(card)
-        card.appendChild(elTitle)
-        card.appendChild(elDesc)
+        divContent.appendChild(cardContainer)
+        cardContainer.appendChild(card)
         card.appendChild(divImg)
         divImg.appendChild(elImg)
+        card.appendChild(elTitle)
+        card.appendChild(elDesc)
         
     })
 }
