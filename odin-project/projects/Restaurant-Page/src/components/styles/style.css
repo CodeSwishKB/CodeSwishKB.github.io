@@ -13,7 +13,6 @@ img{
 
 
 body{
-    min-height: 100vh;
     font-family: var(--ff-header);
 }
 
@@ -50,6 +49,12 @@ button{
 button:hover{
     color: #dad603;
 }
+
+.tab-btn-active{
+    border-bottom:2px solid #dad603;
+    color: #dad603;
+    font-weight:bold;
+  }
 
 .imgLogo{
     width: 9%;
@@ -118,3 +123,45 @@ button:hover{
     object-fit: cover;
     border-radius: 5px;
 }
+
+/* contact module */
+.contact-container{
+    display: grid;
+    text-align: center;
+    place-content: center;
+}
+
+.contact-ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+
+.mbn{
+    margin-bottom: 0;
+}
+
+.list-items{
+    font-size: 2em;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #fffff5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: .5em;
+}
+
+footer div {
+    display: flex;
+}
+
+
+
