@@ -4,7 +4,7 @@ import kalabasa from '../components/img/menu/kalabasa.jpg'
 import okraEggplant from '../components/img/menu/orka_eggplant.jpg'
 import talbos from '../components/img/menu/talbos.jpg'
 
-export function menu(){
+export function menuPage(){
     const gulayMenu = [
         {
             name: 'Malunggay Soup',
@@ -33,8 +33,9 @@ export function menu(){
         },
     ]
     const divContent = document.querySelector('#content')
-    const cardContainer = document.createElement('div')
-    cardContainer.className = "cardContainer"
+    const pageContent = document.createElement('div')
+    pageContent.className = "page-content cardContainer"
+    // pageContent.className = "page-content"
 
     gulayMenu.forEach(item => {
         const card = document.createElement('div')
@@ -52,8 +53,8 @@ export function menu(){
         divImg.className = 'menuDivImg'
         elDesc.className = 'menuDesc'
         
-        divContent.appendChild(cardContainer)
-        cardContainer.appendChild(card)
+        divContent.appendChild(pageContent)
+        pageContent.appendChild(card)
         card.appendChild(divImg)
         divImg.appendChild(elImg)
         card.appendChild(elTitle)

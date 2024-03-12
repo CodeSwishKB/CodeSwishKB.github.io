@@ -1,5 +1,6 @@
 export function homePage(){
     const divContent = document.querySelector('#content')
+    const pageContent = document.createElement('div')
     const elH1 = document.createElement('h1')
     const elP = document.createElement('p')
 
@@ -10,10 +11,12 @@ export function homePage(){
     Sa pamamagitan ng "Gulay ni Mama," ipinapakita namin ang kakayahang magbigay ng masarap at kasiyahang kumain, na hindi kailangang ipagpalit ang kalusugan. Ipinagmamalaki namin ang aming mga pagkaing sariwa at sustansya na nagbibigay-buhay sa bawat bisita, at nagbibigay-diin sa kahalagahan ng pagpapahalaga sa kalusugan at kapaligiran sa bawat pagkain.
     Sa bawat pagtawid sa aming pintuan, tinatanggap namin ang bawat bisita na nag-aasam na makaranas ng kaligayahan at kabusugan sa bawat kagat. Sa "Gulay ni Mama," tayo ay hindi lamang kumakain, tayo ay nagpapalakas, nagpapayaman, at nagbibigay-buhay sa bawat pagsiklab ng lasa at pagpapahalaga. Handa kaming samahan kayo sa inyong paglalakbay tungo sa mas malusog na pamumuhay, isang pagkain sa bawat hakbang.`
 
+    pageContent.className = 'page-content'
     elH1.className = `homeElH1 title`
     elP.className = `homeElP`
 
-    divContent.appendChild(elH1)
-    divContent.appendChild(elP)
+    divContent.appendChild(pageContent)
+    pageContent.appendChild(elH1)
+    pageContent.appendChild(elP)
 
 }

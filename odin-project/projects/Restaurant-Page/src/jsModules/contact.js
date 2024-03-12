@@ -1,6 +1,6 @@
-export function contact(){
+export function contactPage(){
     const divContent = document.querySelector('#content')
-    const elContainer = document.createElement('div')
+    const pageContent = document.createElement('div')
     const elH1 = document.createElement('h1')
     const elH2 = document.createElement('h2')
     const elP = document.createElement('p')
@@ -16,17 +16,18 @@ export function contact(){
     elP.textContent = 'Mon - Fri 10:00AM - 6:00PM'
     socmedList.innerHTML += socmedIconItems
 
-    elContainer.className = `contact-container`
+    pageContent.className = `page-content contact-container`
+    // pageContent.className = `page-content`
     socmedList.className = 'contact-ul'
     elH1.className = 'mbn'
     elH2.className = 'mbn'
     elP.className = 'mbn'
 
-    divContent.appendChild(elContainer)
-    elContainer.appendChild(elH1)
-    elContainer.appendChild(elH2)
-    elContainer.appendChild(elP)
-    elContainer.appendChild(socmedWrap)
+    divContent.appendChild(pageContent)
+    pageContent.appendChild(elH1)
+    pageContent.appendChild(elH2)
+    pageContent.appendChild(elP)
+    pageContent.appendChild(socmedWrap)
     socmedWrap.appendChild(socmedList)
     
 }
