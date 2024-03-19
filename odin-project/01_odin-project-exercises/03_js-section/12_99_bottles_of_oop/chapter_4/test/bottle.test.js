@@ -1,3 +1,4 @@
+
 describe('Bottles', () => {
 	test('the first verse', () => {
 		const expected =
@@ -397,68 +398,79 @@ class Bottles {
 	container(number){
 		if(number === 1){
 			return 'bottle'
-		} else {
+		}else {
 			return 'bottles'
 		}
 	}
 
-	
+	// **pronoun with conditional**
+	pronoun(number){
+		if(number === 1){
+			return 'it'
+		} else {
+			return 'one'
+		}
+	}
+
+	// **quantity method**
+	quantity(number) {
+		switch(number){
+			case -1: 
+				return '99'
+			case 0: 
+				return 'no more'
+			default: 
+				return number.toString()	
+		}
+
+		// if (number === 0){
+		// 	return 'no more'
+		// } else {
+		// 	return number.toString()
+		// }
+	}
+
+	// **leap into action**
+	action(number){
+		if (number === 0){
+			return 'Go to the store and buy some more'
+		} else {
+			`Take ${this.pronoun(number)} down and pass it around`
+		}
+	}
+
+	// **successor handles default**
+	successor(number){
+		if (number === 0) {
+			return 99
+		} else {
+			return number - 1
+		}
+	}
 
 	verse(number) {
 		switch (number) {
-			// **branch conditional**
 			case 0:
 				return (
-					'No more bottles of beer on the wall, ' +
-					'no more bottles of beer.\n' +
-					'Go to the store and buy some more, ' +
-					'99 bottles of beer on the wall.\n'
+					`${capitalize(this.quantity(this.successor(number)))} ${this.container(number)} of beer on the wall, ` +
+					`${this.quantity(number)} ${this.container(number)} of beer.\n` +
+					`${this.action(number)}, ` +
+					`${this.quantity(this.successor(number))} ${this.container(number - 1)} of beer on the wall.\n` 
 				)
-
-			// **1 and default 2nd phrases identical**
-			case 1:
-				return (
-					`${number} ${this.container(number)} of beer on the wall, ` +
-					`${number} ${this.container(number)} of beer.\n`
-				)		
-
-			// **1 and default 1st phrases identical**
-			// case 1:
-			// 	return (
-			// 		`${number} ${this.container(number)} of beer on the wall, ` +
-			// 		'1 bottle of beer.\n' +
-			// 		'Take it down and pass it around, ' +
-			// 		'no more bottles of beer on the wall.\n'
-			// 	)
-
-			// **1 and default 1st phrases in progress**
-			// case 1:
-			// 	return (
-			// 		`${number} bottle of beer on the wall, ` +
-			// 		'1 bottle of beer.\n' +
-			// 		'Take it down and pass it around, ' +
-			// 		'no more bottles of beer on the wall.\n'
-			// )
-
-			// case 1:
-			// 	return (
-			// 		'1 bottle of beer on the wall, ' +
-			// 		'1 bottle of beer.\n' +
-			// 		'Take it down and pass it around, ' +
-			// 		'no more bottles of beer on the wall.\n'
-			// 	)
 
 			default:
 				return (
-					`${number} bottles of beer on the wall, ` +
-					`${number} bottles of beer.\n` +
-					'Take one down and pass it around, '+
-					`${number - 1} ${this.container(number - 1)} of beer on the wall.\n`
+					`${capitalize(this.quantity(this.successor(number)))} ${this.container(number)} of beer on the wall, ` +
+					`${this.quantity(number)} ${this.container(number)} of beer.\n` +
+					`${this.action(number)} ` +
+					`${this.quantity(this.successor(number))} ${this.container(number - 1)} of beer on the wall.\n`
 				)
 		}
 	}
 
 }
+
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
 const downTo = (max, min) => {
 	let numbers = []
