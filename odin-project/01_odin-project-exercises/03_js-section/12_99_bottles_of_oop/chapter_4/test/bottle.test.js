@@ -394,83 +394,65 @@ class Bottles {
 		return downTo(starting, ending).map(i => this.verse(i)).join('\n')
 	}
 
+	verse(number) {
+		return (
+			`${capitalize(this.quantity(number))} ${this.container(number)} of beer on the wall, ` +
+			`${this.quantity(number)} ${this.container(number)} of beer.\n` +
+			`${this.action(number)}, ` +
+			`${this.quantity(this.successor(number))} ${this.container(this.successor(number))} of beer on the wall.\n`
+		);
+
+	}
+
+	// **quantity method**
+	quantity(number) {
+		if (number === 0) {
+			return 'no more'
+		} else {
+			return number.toString()
+		}
+	}
+
 	// **container with conditional**
-	container(number){
-		if(number === 1){
+	container(number) {
+		if (number === 1) {
 			return 'bottle'
-		}else {
+		} else {
 			return 'bottles'
 		}
 	}
 
+	// **leap into action**
+	action(number) {
+		if (number === 0) {
+			return 'Go to the store and buy some more'
+		} else {
+			return (
+				`Take ${this.pronoun(number)} down and pass it around`
+			)
+		}
+	}
+
 	// **pronoun with conditional**
-	pronoun(number){
-		if(number === 1){
+	pronoun(number) {
+		if (number === 1) {
 			return 'it'
 		} else {
 			return 'one'
 		}
 	}
 
-	// **quantity method**
-	quantity(number) {
-		switch(number){
-			case -1: 
-				return '99'
-			case 0: 
-				return 'no more'
-			default: 
-				return number.toString()	
-		}
-
-		// if (number === 0){
-		// 	return 'no more'
-		// } else {
-		// 	return number.toString()
-		// }
-	}
-
-	// **leap into action**
-	action(number){
-		if (number === 0){
-			return 'Go to the store and buy some more'
-		} else {
-			`Take ${this.pronoun(number)} down and pass it around`
-		}
-	}
-
 	// **successor handles default**
-	successor(number){
+	successor(number) {
 		if (number === 0) {
-			return 99
+			return 99;
 		} else {
-			return number - 1
+			return number - 1;
 		}
 	}
-
-	verse(number) {
-		switch (number) {
-			case 0:
-				return (
-					`${capitalize(this.quantity(this.successor(number)))} ${this.container(number)} of beer on the wall, ` +
-					`${this.quantity(number)} ${this.container(number)} of beer.\n` +
-					`${this.action(number)}, ` +
-					`${this.quantity(this.successor(number))} ${this.container(number - 1)} of beer on the wall.\n` 
-				)
-
-			default:
-				return (
-					`${capitalize(this.quantity(this.successor(number)))} ${this.container(number)} of beer on the wall, ` +
-					`${this.quantity(number)} ${this.container(number)} of beer.\n` +
-					`${this.action(number)} ` +
-					`${this.quantity(this.successor(number))} ${this.container(number - 1)} of beer on the wall.\n`
-				)
-		}
-	}
-
 }
 
-const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 const downTo = (max, min) => {
 	let numbers = []
@@ -478,6 +460,7 @@ const downTo = (max, min) => {
 	for (let i = max; i >= min; i--) {
 		numbers.push(i)
 	}
-
 	return numbers
 }
+
+
