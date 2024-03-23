@@ -391,7 +391,9 @@ class Bottles {
 	}
 
 	verses(starting, ending) {
-		return downTo(starting, ending).map(i => this.verse(i)).join('\n')
+		return downTo(starting, ending)
+			.map(i => this.verse(i))
+			.join('\n')
 	}
 
 	verse(number) {
