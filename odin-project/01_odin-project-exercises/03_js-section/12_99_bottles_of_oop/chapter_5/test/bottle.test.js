@@ -454,6 +454,76 @@ class Bottles {
 	}
 }
 
+class BottleNumber{
+	constructor(number){
+		this.number = number
+	}
+
+	song() {
+		return this.verses(99, 0)
+	}
+
+	verses(starting, ending) {
+		return downTo(starting, ending)
+			.map(i => this.verse(i))
+			.join('\n')
+	}
+
+	verse(number) {
+		return (
+			`${capitalize(this.quantity(number))} ${this.container(number)} of beer on the wall, ` +
+			`${this.quantity(number)} ${this.container(number)} of beer.\n` +
+			`${this.action(number)}, ` +
+			`${this.quantity(this.successor(number))} ${this.container(this.successor(number))} of beer on the wall.\n`
+		);
+
+	}
+
+	// **quantity method**
+	quantity(number) {
+		return new BottleNumber(number).quantity(number);
+	
+	}
+
+	// **container with conditional**
+	container(number) {
+		if (number === 1) {
+			return 'bottle'
+		} else {
+			return 'bottles'
+		}
+	}
+
+	// **leap into action**
+	action(number) {
+		if (number === 0) {
+			return 'Go to the store and buy some more'
+		} else {
+			return (
+				`Take ${this.pronoun(number)} down and pass it around`
+			)
+		}
+	}
+
+	// **pronoun with conditional**
+	pronoun(number) {
+		if (number === 1) {
+			return 'it'
+		} else {
+			return 'one'
+		}
+	}
+
+	// **successor handles default**
+	successor(number) {
+		if (number === 0) {
+			return 99;
+		} else {
+			return number - 1;
+		}
+	}
+}
+
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 const downTo = (max, min) => {
