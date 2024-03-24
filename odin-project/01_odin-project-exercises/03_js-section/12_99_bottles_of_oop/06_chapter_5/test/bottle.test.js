@@ -406,51 +406,25 @@ class Bottles {
 
 	}
 
-	// **quantity method**
 	quantity(number) {
-		if (number === 0) {
-			return 'no more'
-		} else {
-			return number.toString()
-		}
+		return new BottleNumber(number).quantity()
 	}
 
-	// **container with conditional**
 	container(number) {
-		if (number === 1) {
-			return 'bottle'
-		} else {
-			return 'bottles'
-		}
+		return new BottleNumber(number).container()
 	}
 
-	// **leap into action**
 	action(number) {
-		if (number === 0) {
-			return 'Go to the store and buy some more'
-		} else {
-			return (
-				`Take ${this.pronoun(number)} down and pass it around`
-			)
-		}
+		return new BottleNumber(number).action()
 	}
 
-	// **pronoun with conditional**
 	pronoun(number) {
-		if (number === 1) {
-			return 'it'
-		} else {
-			return 'one'
-		}
+		return new BottleNumber(number).pronoun()
 	}
 
-	// **successor handles default**
 	successor(number) {
-		if (number === 0) {
-			return 99;
-		} else {
-			return number - 1;
-		}
+		return new BottleNumber(number).successor()
+	
 	}
 }
 
@@ -479,47 +453,48 @@ class BottleNumber{
 
 	}
 
-	// **quantity method**
-	quantity(number) {
-		return new BottleNumber(number).quantity(number);
-	
+	quantity() {
+		if (this.number === 0) {
+			return 'no more'
+		} else {
+			return this.number.toString()
+		}
 	}
 
-	// **container with conditional**
-	container(number) {
-		if (number === 1) {
+	container() {
+		if (this.number === 1) {
 			return 'bottle'
 		} else {
 			return 'bottles'
 		}
 	}
 
-	// **leap into action**
-	action(number) {
-		if (number === 0) {
+	action() {
+		if (this.number === 0) {
 			return 'Go to the store and buy some more'
 		} else {
 			return (
-				`Take ${this.pronoun(number)} down and pass it around`
+				`Take ${this.pronoun(this.number)} down and pass it around`
 			)
 		}
 	}
 
-	// **pronoun with conditional**
-	pronoun(number) {
-		if (number === 1) {
+	pronoun() {
+		if(arguments.length !== 0){
+			throw new Error("wrong number of arguments")
+		}
+		if (this.number === 1) {
 			return 'it'
 		} else {
 			return 'one'
 		}
 	}
 
-	// **successor handles default**
-	successor(number) {
-		if (number === 0) {
+	successor() {
+		if (this.number === 0) {
 			return 99;
 		} else {
-			return number - 1;
+			return this.number - 1;
 		}
 	}
 }
