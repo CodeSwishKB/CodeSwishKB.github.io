@@ -1,0 +1,40 @@
+.body {
+  padding: 50px;
+}
+
+.box {
+  display: inline-block;
+  background: pink;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  position: relative;
+  /* animation: myframes 2s ease-in-out 0s infinite; */
+  animation-name: myframes;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out();
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes myframes {
+  0% {
+    transform: scale(0)
+  }
+
+  /* 50%, */
+  /* 70% { */
+  /*   height: 400px; */
+  /*   background: yellow; */
+  /* } */
+
+  100% {
+    transform: scale(1);
+  }
+}
