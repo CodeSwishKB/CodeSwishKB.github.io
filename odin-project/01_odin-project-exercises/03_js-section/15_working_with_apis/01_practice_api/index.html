@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with apis</title>
+    <style>
+      img {
+        max-width: 100%;
+        object-fit: cover;
+      }
+      button {
+        cursor: pointer;
+      }
+      .container {
+        width: calc(200px * 4 + 3em);
+        margin: 0 auto;
+      }
+      .search-wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 1em 0;
+        margin-bottom: 0.5em;
+        gap: 0.5em;
+      }
+      .error {
+        color: red;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+      .img-wrapper {
+        columns: 4;
+        column-gap: 1em;
+      }
+      .imgClass {
+        margin: 0.5em 0.5em 0 0;
+      }
+      .kobe {
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="search-wrapper">
+        <form action="">
+          <input type="search" name="" id="search" />
+          <button id="search-btn">search</button>
+        </form>
+
+        <button id="new-gif">New Kobe Gif</button>
+      </div>
+      <div class="img-wrapper"></div>
+      <p class="error"></p>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
