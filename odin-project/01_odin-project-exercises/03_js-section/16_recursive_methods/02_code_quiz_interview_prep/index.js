@@ -41,7 +41,7 @@ const factorial = (n) => {
   if (n == 0 || n == 1) return 1;
   return n * factorial(n - 1);
 };
-console.log(factorial(5));
+// console.log(factorial(5));
 /** explaination 
 factorial(5)
   5 * factorial(4) = 20
@@ -49,3 +49,96 @@ factorial(5)
       3 * factorial(2) = 6
         2 * factorial(1) = 2  // n-1 until n became 1
 **/
+
+// Question 4: Check all values in an array
+// Write a function called all which accepts an array and a callback and returns true if every value in the array returns true when passed as parameter to the callback function
+// Sample:
+// var allAreLessThanSeven = all([1,2,9], function(num){
+// return num < 7;
+// });
+// console.log(allAreLessThanSeven); // false
+const all = (arr, callbackFn) => {
+  var copy = copy || arr.slice();
+
+  if (copy.length === 0) return true;
+  if (callbackFn(copy[0])) {
+    copy.shift();
+    return all(copy, callbackFn);
+  } else {
+    return false;
+  }
+};
+var allAreLessThanSeven = all([1, 2, 9], function (num) {
+  return num < 7;
+});
+// console.log(allAreLessThanSeven); // false
+
+// Question 5: Product of an array
+// Write a function called productOfArray which takes in an array of numbers and returns the product of them all
+const productOfArray = (arrNum) => {
+  // Base case
+  if (arrNum.length === 0) return 1;
+  return arrNum.shift() * productOfArray(arrNum);
+};
+var six = productOfArray([1, 2, 3]); // 6
+var sixty = productOfArray([1, 2, 3, 10]); // 60
+// console.log(six, sixty)
+
+// Question 6: Search JS object
+// Write a function called contains that searches for a value in a nested object. It returns true if the object contains that value.
+var nestedObject = {
+  data: {
+    info: {
+      stuff: {
+        thing: {
+          moreStuff: {
+            magicNumber: 44,
+            something: "foo2",
+          },
+        },
+      },
+    },
+  },
+};
+
+const contains = (obj, searchVal) => {
+  // base case
+  if (typeof obj !== "object" || obj === null) {
+    return obj === searchVal;
+  }
+
+  // loop the object
+  for (let value of Object.values(obj)) {
+    // recursion starts
+    if (contains(value, searchVal)) {
+      return true;
+    }
+  }
+  return false;
+  // let exist = Object.values(obj.data.info.stuff.thing.moreStuff).includes(val);
+  // return exist;
+};
+let hasIt = contains(nestedObject, 44); // true
+// console.log(hasIt);
+let doesntHaveIt = contains(nestedObject, "foo"); // false
+// console.log(doesntHaveIt);
+
+// Question 7: Parse a multi-dimensional array
+// Given a multi-dimensional integer array, return the total number of integers stored inside this array
+const totalIntegers = (arr) => {
+  if (arr.length == 0) return 0;
+
+  let total = 0;
+  let firstEl = arr.shift();
+
+  //check if its array and number
+  if (Array.isArray(firstEl)) {
+    total += totalIntegers(firstEl);
+  } else if (Number.isInteger(firstEl)) {
+    total++;
+  }
+
+  return total + totalIntegers(arr);
+};
+var seven = totalIntegers([[[5], 3], 0, 2, ["foo"], [], [4, [5, 6]]]); // 7
+// console.log(seven)
