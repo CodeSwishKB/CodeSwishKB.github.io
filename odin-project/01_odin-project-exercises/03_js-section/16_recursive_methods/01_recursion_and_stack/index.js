@@ -72,7 +72,7 @@ const fib = (n) => {
   if (n == 3) return 2;
   return fib(n - 1) + fib(n - 2);
 };
-// console.log(fib(77))
+console.log(fib(10))
 
 // NOTE: Fast solution ;)
 const fib2 = (n) => {
@@ -86,7 +86,7 @@ const fib2 = (n) => {
   }
   return b;
 };
-// console.log(fib2(3));
+// console.log(fib2(10));
 
 // Output a single-linked list
 // Let’s say we have a single-linked list (as described in the chapter Recursion and stack):
@@ -164,4 +164,4 @@ const collatz = (n) => {
   if (n % 2 === 0) return 1 + collatz(n / 2);
   if (n % 2 !== 0) return 1 + collatz(3 * n + 1);
 };
-console.log(collatz(3));
+// console.log(collatz(3));
