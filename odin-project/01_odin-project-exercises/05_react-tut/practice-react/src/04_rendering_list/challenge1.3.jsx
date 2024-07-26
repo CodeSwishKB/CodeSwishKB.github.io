@@ -4,13 +4,14 @@
 
 import { recipes } from "./datas";
 
+
 function Recipe({ name, ingredients }) {
   return (
     <>
       <h2>{name}</h2>
       <ul>
-        {ingredients.map(ingredient =>
-          <li>{ingredient}</li>
+        {ingredients.map(item => 
+          <li>{item}</li>
         )}
       </ul>
     </>
@@ -20,11 +21,10 @@ function Recipe({ name, ingredients }) {
 export default function RecipeListExtract() {
   return (
     <div>
-      <h1>Recipe</h1>
+      <h1>Recipes</h1>
       {recipes.map(recipe =>
-        <Recipe {...recipe} />
+        <Recipe {...recipe}/>
       )}
-    </div>
-  )
+    </div>)
 }
 

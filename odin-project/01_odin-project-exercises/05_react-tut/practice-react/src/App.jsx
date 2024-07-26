@@ -1,28 +1,33 @@
 import { useState } from 'react'
-import TodoList from './practice/TodoList'
-import Bio from './challenges/challenge_1-1'
+import TodoList from './01_practice/TodoList'
+import Bio from './02_challenges/challenge_1-1'
 
-import TodoList2 from './challenges/challenge_2-1'
-import TodoList3 from './challenges/challenge_2-2'
-import TodoList4 from './challenges/challenge_2-3'
+import TodoList2 from './02_challenges/challenge_2-1'
+import TodoList3 from './02_challenges/challenge_2-2'
+import TodoList4 from './02_challenges/challenge_2-3'
 
-import PackingList from './conditional_rendering/challenge1.1'
-import PackingList2 from './conditional_rendering/challenge1.2'
-import DrinkList from './conditional_rendering/challenge1.3'
+import PackingList from './03_conditional_rendering/challenge1.1'
+import PackingList2 from './03_conditional_rendering/challenge1.2'
+import DrinkList from './03_conditional_rendering/challenge1.3'
 
-import List from './rendering_list/sandbox'
-import List2 from './rendering_list/sandbox'
-import ListChallenge from './rendering_list/challenge1.1'
-import RecipeListChallenge from './rendering_list/challenge1.2'
-import Poem from './conditional_rendering/challenge1.4'
+import List from './04_rendering_list/sandbox'
+import List2 from './04_rendering_list/sandbox'
+import ListChallenge from './04_rendering_list/challenge1.1'
+import RecipeListChallenge from './04_rendering_list/challenge1.2'
+import RecipeListExtract from './04_rendering_list/challenge1.3'
+import Poem from './04_rendering_list/challenge1.4'
 
+import Profile from './05_passing_props_to_a_component/sandbox' 
+import Gallery from './05_passing_props_to_a_component/challenge1'
+import Profile2 from './05_passing_props_to_a_component/challenge2'
+import Profile3 from './05_passing_props_to_a_component/challenge3'
 
 import './App.css'
 
 function App() {
   return (
     <>
-      <Poem />
+      <Profile3 />
     </>
   )
 }

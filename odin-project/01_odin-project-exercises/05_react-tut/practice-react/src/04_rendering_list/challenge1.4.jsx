@@ -21,12 +21,14 @@ const poem = {
 export default function Poem() {
   return (
     <article>
-      {poem.lines.map((item, idx) =>
+      {poem.lines.map((line, index) =>
         <>
-          {idx > 0 && <hr />}
-          <p>{item}</p>
+          {index > 0 && <hr />}
+          <p key={index}>
+            {line}
+          </p>
         </>
       )}
     </article>
-  )
+  );
 }
