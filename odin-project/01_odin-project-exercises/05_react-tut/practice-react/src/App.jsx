@@ -22,12 +22,18 @@ import Gallery from './05_passing_props_to_a_component/challenge1'
 import Profile2 from './05_passing_props_to_a_component/challenge2'
 import Profile3 from './05_passing_props_to_a_component/challenge3'
 
+import Gallery2 from './06_State/sandbox'
+import GalleryChallenge from './06_State/challenge1'
+import Form from './06_State/challenge2'
+import FeedbackForm from './06_State/challenge3'
+import FeedbackForm2 from './06_State/challenge4'
+
 import './App.css'
 
 function App() {
   return (
     <>
-      <Profile3 />
+      <FeedbackForm2 />
     </>
   )
 }
