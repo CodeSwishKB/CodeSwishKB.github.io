@@ -4,7 +4,6 @@
 // To fix this code, remove the unnecessary state variable. (We will discuss about why this didn’t work later.)
 // Can you explain why this state variable was unnecessary
 
-import { useState } from "react";
 
 export default function FeedbackForm2() {
 
