@@ -28,12 +28,15 @@ import Form from './06_State/challenge2'
 import FeedbackForm from './06_State/challenge3'
 import FeedbackForm2 from './06_State/challenge4'
 
+import { Form2, Form3, Counter } from './07_state_as_snapshot/sandbox'
+import TrafficLight from './07_state_as_snapshot/challenge1'
+
 import './App.css'
 
 function App() {
   return (
     <>
-      <FeedbackForm2 />
+      <TrafficLight />
     </>
   )
 }
