@@ -17,7 +17,7 @@ import RecipeListChallenge from './04_rendering_list/challenge1.2'
 import RecipeListExtract from './04_rendering_list/challenge1.3'
 import Poem from './04_rendering_list/challenge1.4'
 
-import Profile from './05_passing_props_to_a_component/sandbox' 
+import Profile from './05_passing_props_to_a_component/sandbox'
 import Gallery from './05_passing_props_to_a_component/challenge1'
 import Profile2 from './05_passing_props_to_a_component/challenge2'
 import Profile3 from './05_passing_props_to_a_component/challenge3'
@@ -31,12 +31,14 @@ import FeedbackForm2 from './06_State/challenge4'
 import { Form2, Form3, Counter } from './07_state_as_snapshot/sandbox'
 import TrafficLight from './07_state_as_snapshot/challenge1'
 
+import { MovingDot, FeedbackForm3, Form4, Menu, TravelPlan} from './08_choosing_the_state_structure/sandbox'
+
 import './App.css'
 
 function App() {
   return (
     <>
-      <TrafficLight />
+      <TravelPlan />
     </>
   )
 }
