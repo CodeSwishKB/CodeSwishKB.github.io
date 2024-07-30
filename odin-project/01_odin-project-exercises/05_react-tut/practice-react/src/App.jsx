@@ -34,13 +34,14 @@ import TrafficLight from './07_state_as_snapshot/challenge1'
 import { MovingDot, FeedbackForm3, Form4, Menu, TravelPlan} from './08_choosing_the_state_structure/sandbox'
 
 import Clock from './08_choosing_the_state_structure/challenge1'
+import MailClient from './08_choosing_the_state_structure/challenge4' 
 
 import './App.css'
 
 function App() {
   return (
     <>
-      <Clock />
+      <MailClient />
     </>
   )
 }
