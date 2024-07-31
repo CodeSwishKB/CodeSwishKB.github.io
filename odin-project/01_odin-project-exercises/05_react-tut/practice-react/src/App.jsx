@@ -35,13 +35,19 @@ import { MovingDot, FeedbackForm3, Form4, Menu, TravelPlan} from './08_choosing_
 
 import Clock from './08_choosing_the_state_structure/challenge1'
 import MailClient from './08_choosing_the_state_structure/challenge4' 
+import MailClient2 from './08_choosing_the_state_structure/challenge3'
+
+import { Accordion } from './09_sharing_state_between_components/sandbox'
+import SyncedInputs from './09_sharing_state_between_components/challege1'
+import FilterableList from './09_sharing_state_between_components/challenge2'
+import Person from './09_sharing_state_between_components/assignment'
 
 import './App.css'
 
 function App() {
   return (
     <>
-      <MailClient />
+      <Person />
     </>
   )
 }
